@@ -20,10 +20,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50)
-    @NotBlank(groups = {RegistrationValidator.class}, message = "Podaj login")
-    @Size(max = 50, message = "Login moze mieć maksymalnie 50 znaków", groups = {RegistrationValidator.class})
-    private String login;
+//    @Column(length = 50)
+//    @NotBlank(groups = {RegistrationValidator.class}, message = "Podaj login")
+//    @Size(max = 50, message = "Login moze mieć maksymalnie 50 znaków", groups = {RegistrationValidator.class})
+//    private String login;
+
+    @Email(message = "Wprowadź prawidłowy adres email")
+    @Pattern(regexp = "^[a-zA-Z0-9]+[._-]*[a-zA-Z0-9]*@[a-zA-Z0-9]+([.][a-z]+)+([.][a-z]+)?$", message = "Wprowadź prawidłowy adres email", groups = {RegistrationValidator.class, EditValidator.class})
+    @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
+    private String email;
 
     @Size(min = 5, max = 30, message = "Hasło musi miec od 5 do 30 znaków", groups = RegistrationValidator.class)
     @NotBlank(groups = RegistrationValidator.class)
@@ -43,12 +48,6 @@ public class User {
     @NotBlank(groups = {RegistrationValidator.class, EditValidator.class})
     @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
     private String lastName;
-
-
-    @Email(message = "Wprowadź prawidłowy adres email")
-    @Pattern(regexp = "^[a-zA-Z0-9]+[._-]*[a-zA-Z0-9]*@[a-zA-Z0-9]+([.][a-z]+)+([.][a-z]+)?$", message = "Wprowadź prawidłowy adres email", groups = {RegistrationValidator.class, EditValidator.class})
-    @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
-    private String email;
 
 
     @Column(name = "admin")
@@ -72,13 +71,13 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
+//    public String getLogin() {
+//        return login;
+//    }
+//
+//    public void setLogin(String login) {
+//        this.login = login;
+//    }
 
     public String getPassword() {
         return password;
@@ -128,12 +127,19 @@ public class User {
         this.superUser = superUser;
     }
 
+    public List<Gift> getGiftList() {
+        return giftList;
+    }
+
+    public void setGiftList(List<Gift> giftList) {
+        this.giftList = giftList;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", login='" + login + '\'' +
+//                ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

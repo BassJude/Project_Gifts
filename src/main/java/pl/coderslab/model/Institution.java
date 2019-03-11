@@ -49,6 +49,9 @@ public class Institution {
     @Size(max = 50, message = "Maksymalnie 50 znaków", groups = {RegistrationValidator.class, EditValidator.class})
     private String location;
 
+    @OneToMany(mappedBy = "institution", fetch = FetchType.EAGER)
+    private List<Gift> giftList = new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -106,8 +109,13 @@ public class Institution {
         this.location = location;
     }
 
-    @OneToMany(mappedBy = "institution",fetch = FetchType.EAGER)
-    private List<Gift> giftList=new ArrayList<>();
+    public List<Gift> getGiftList() {
+        return giftList;
+    }
+
+    public void setGiftList(List<Gift> giftList) {
+        this.giftList = giftList;
+    }
 
     @Override
     public String toString() {

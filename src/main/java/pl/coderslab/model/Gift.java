@@ -1,14 +1,11 @@
 package pl.coderslab.model;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -70,5 +67,122 @@ public class Gift {
     @ManyToOne
     private Institution institution;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDecsription() {
+        return decsription;
+    }
+
+    public void setDecsription(String decsription) {
+        this.decsription = decsription;
+    }
+
+    public String getCourierDecsription() {
+        return courierDecsription;
+    }
+
+    public void setCourierDecsription(String courierDecsription) {
+        this.courierDecsription = courierDecsription;
+    }
+
+    public int getBags() {
+        return bags;
+    }
+
+    public void setBags(int bags) {
+        this.bags = bags;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHomeNumber() {
+        return homeNumber;
+    }
+
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDateTime getPickUpTime() {
+        return pickUpTime;
+    }
+
+    public void setPickUpTime(LocalDateTime pickUpTime) {
+        this.pickUpTime = pickUpTime;
+    }
+
+    public LocalDateTime getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(LocalDateTime sendTime) {
+        this.sendTime = sendTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Institution getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
+    }
+
+    @Override
+    public String toString() {
+        return "Gift{" +
+                "id=" + id +
+                ", decsription='" + decsription + '\'' +
+                ", courierDecsription='" + courierDecsription + '\'' +
+                ", bags=" + bags +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", street='" + street + '\'' +
+                ", homeNumber='" + homeNumber + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

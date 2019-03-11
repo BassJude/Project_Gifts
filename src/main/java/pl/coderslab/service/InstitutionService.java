@@ -16,16 +16,24 @@ public class InstitutionService {
     public void save(Institution institution) {
         institutionRepository.save(institution);
     }
+
     public void update(Institution institution) {
         institutionRepository.save(institution);
     }
-    public void deleteById(Long id){
+
+    public void deleteById(Long id) {
         institutionRepository.delete(id);
     }
+
     public void deleteInstitution(Institution institution) {
         institutionRepository.delete(institution);
     }
-    public Institution findById(Long id) {return institutionRepository.findOne(id);}
 
-    public List<Institution> findAll(){return institutionRepository.findAll();}
+    public Institution findById(Long id) {
+        return institutionRepository.findOne(id);
+    }
+
+    public List<Institution> findAll() {
+        return institutionRepository.findAll();
+    }
 }

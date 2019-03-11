@@ -12,6 +12,7 @@ import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -24,7 +25,7 @@ import java.util.Locale;
 @ComponentScan("pl.coderslab")
 @EnableTransactionManagement
 @EnableJpaRepositories("pl.coderslab.repository")
-public class AppConfig {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver viewResolver() {
@@ -34,7 +35,7 @@ public class AppConfig {
         return viewResolver;
     }
 
-   // @Override
+    @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
