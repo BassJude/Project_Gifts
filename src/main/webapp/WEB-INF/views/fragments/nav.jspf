@@ -16,7 +16,7 @@
                     Witaj ${firstName}
                     <ul class="dropdown">
                         <c:if test="${admin==true}">
-                            <li><a href="/admin/home">Strona Administracyjna</a></li>
+                            <li><a href="/admin">Strona Administracyjna</a></li>
                         </c:if>
 
                         <li><a href="#">Profil</a></li>

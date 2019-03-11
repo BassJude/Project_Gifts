@@ -1,0 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: adam
+  Date: 11.03.19
+  Time: 19:32
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<nav class="container container--70">
+    <ul class="nav--actions">
+
+
+    <ul>
+        <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
+        <li><a href="#" class="btn btn--without-border">Instytucje</a></li>
+        <li><a href="#" class="btn btn--without-border">Dary</a></li>
+    </ul>
+</nav>
