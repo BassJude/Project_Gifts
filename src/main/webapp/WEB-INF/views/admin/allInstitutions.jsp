@@ -14,21 +14,23 @@
 <section>
 
     <c:choose>
-        <c:when test="${userDelete==true}">
+        <c:when test="${institutionDelete==true}">
 
-         <p class="error">Usunąłeś uzytkownika!</p>
-         <p class="error">Id: ${user.id}, email: ${user.email}, imię: ${user.firstName}, nazwisko: ${user.lastName}</p>
+            <p class="error">Usunąłeś instytucje!</p>
+            <p class="error">Id: ${institution.id}, nazwa ${institution.name}</p>
         </c:when>
 
         <c:when test="${Invalid==true}">
 
-            <p class="error">Nie możesz usunąć użytkownika. Użytkownik jest wskazywany przez rekordy w tabeli z darami!</p>
+            <p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>
         </c:when>
 
-        <c:when test="${AdminInvalid==true}">
+        <c:when test="${registration==true}">
 
-            <p class="error">Nie możesz usunąć użytkownika, który jest ostatnim adminem</p>
+            <p class="error">Dodałeś nową instytucje</p>
         </c:when>
+
+
 
 
         <c:otherwise>
@@ -37,8 +39,8 @@
     </c:choose>
 
 
-    <form action="/admin/searchUser" method="get">
-        Wyszukaj użytkownika: <input type="text" name="search" placeholder="wpisz szukane hasło">
+    <form action="/admin/searchInstitution" method="get">
+        Wyszukaj instytucje: <input type="text" name="search" placeholder="instytucja">
 
         <input type="submit" value="szukaj" >
     </form>
@@ -47,31 +49,36 @@
         <thead>
         <tr>
             <td>Id</td>
-            <td>email</td>
-            <td>Imię</td>
-            <td>Nazwisko</td>
-            <td>Dary użytkownika</td>
-            <td>Hasło</td>
-            <td>Admin</td>
+            <td>Nazwa</td>
+            <td>Cel i misja</td>
+            <td>Co potrzebujemy</td>
+            <td>Adres</td>
+            <td>Email</td>
+            <td>Telefon</td>
+            <td>Lokalizacja</td>
+            <td>Lista darów od użytkowników</td>
             <td>Edytuj</td>
             <td>Usuń</td>
         </tr>
 
         </thead>
         <tbody>
-        <c:forEach items="${users}" var="user">
+        <c:forEach items="${institutions}" var="institution">
             <tr>
-                <td>${user.id}</td>
-                <td>${user.email}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td><a style="color: #309125" href="/admin/gifts/${user.id}">Lista darów</a></td>
-                <td>${user.password}</td>
-                <td>${user.superUser}</td>
+                <td>${institution.id}</td>
+                <td>${institution.name}</td>
+                <td>${institution.missionTarget}</td>
+                <td>${institution.needs}</td>
+                <td>${institution.address}</td>
+                <td>${institution.email}</td>
+                <td>${institution.phone}</td>
+                <td>${institution.location}</td>
+                <td><a style="color: #309125" href="/admin/giftsFromUsers/${institution.id}">Lista darów</a></td>
 
-                <td><a style="color: #309125" href="/admin/editUser/${user.id}">Edytuj użytkownika</a></td>
-                <td><a style="color: #309125" href="/admin/deleteUser/${user.id}" onclick="return confirm('Czy na pewno skasować użytkownika?')">Usuń
-                    użytkownika</a></td>
+
+                <td><a style="color: #309125" href="/admin/editInstitution/${institution.id}">Edytuj instytucje</a></td>
+                <td><a style="color: #309125" href="/admin/deleteInstitution/${institution.id}" onclick="return confirm('Czy na pewno skasować instytucje?')">Usuń
+                    instytucje</a></td>
 
 
             </tr>

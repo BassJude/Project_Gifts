@@ -1,22 +1,43 @@
 
-INSERT INTO questions (answer1,answer2,answer3,answer4,good_answer,question) VALUES
-("zgłaszać pracodawcy, przełożonemu lub służbie BHP sytuacje zagrożenia na terenie zakładu pracy;",
-"dbać o ład i porządek na stanowisku pracy;",
-"znać przepisy i zasady bhp oraz wykonywać pracę w sposób zgodny z przepisami i zasadami bhp oraz stosować się do wydawanych w tym zakresie poleceń i wskazówek przełożonych;",
-"organizować, przygotowywać i prowadzić prace, w oparciu o obowiązujące przepisy BHP oraz wewnętrzne instrukcje bezpiecznej pracy.",
-"A",
-"Co nie należ do podstawowych obowiązków pracownika?"),
+INSERT INTO institutions (name,missionTarget,needs,address,email,phone,location) VALUES
+("Fundacja \"Nadzieja\"",
+"Pomoc dzieciom z ubogich rodzin.",
+"ubrania, jedzenie, sprzęt AGD, meble, zabawki",
+"ul. Mysia 25, 04-081 Warszawa",
+"kontakt@nadzieja.pl",
+"+48 956 321 457",
+"mazowieckie"),
 
-("w Ustawie o Państwowej Inspekcji Pracy z 2007 r.;",
-"w Dziale Dziesiątym Kodeksu pracy i Regulaminie pracy;",
-"w Ustawie o ubezpieczeniu społecznym z tytułu wypadków przy pracy i chorób zawodowych z 2002;",
- "Rozporządzenie Ministra Pracy i Polityki Socjalnej z 1997 r. w sprawie ogólnych przepisów bezpieczeństwa i higieny pracy.",
-"A",
-"Obowiązki pracodawcy w zakresie BHP zostały szczególnie określone w:"),
+("Fundacja \"Wioski dziecięce\"",
+"Pomoc dzieciom w domach dziecka",
+"ubrania, jedzenie, sprzęt AGD, meble, zabawki",
+"ul. Krucza 15, 04-081 Łódź",
+"kontakt@wioski.pl",
+"+48 321 321 457",
+"łódzkie"),
+
+("Fundacja \"Dla dzieci\"",
+"Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+"ubrania, meble, zabawki",
+"ul. Dolna 55, 04-081 Kraków",
+"kontakt@dzieci.pl",
+"+48 321 957 457",
+"małopolskie"),
+
+("Fundacja \"Wyborcza\"",
+"Pomoc biednym dziennikarzom",
+"ubrania, jedzenie, sprzęt AGD, meble, zabawki",
+"ul. Jakaś 17, 04-081 Wrocław",
+"kontakt@wyborcza.pl",
+"+48 321 951 457",
+"dolnośląskie");
+
+
 
 
 INSERT INTO users (email,password,firstName,lastName,admin) VALUES
 ("sowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true ),
+("antek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true ),
 ("mowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Ewelina","Musiał",false ),
 ("krowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Anetka","Kowalczuk",true ),
 ("kotek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Amelka","Pisera",false ),

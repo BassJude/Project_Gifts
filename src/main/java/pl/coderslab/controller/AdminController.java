@@ -6,12 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.model.Gift;
+import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
 import pl.coderslab.service.GiftService;
 import pl.coderslab.service.InstitutionService;
 import pl.coderslab.service.UserService;
 import pl.coderslab.validator.EditValidator;
+import pl.coderslab.validator.RegistrationValidator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,13 +32,37 @@ public class AdminController {
     @Autowired
     private GiftService giftService;
 
+    @ModelAttribute("locations")
+    public List<String> forSelect(){
+        List<String> stringList=new ArrayList<>();
+        stringList.add("dolnośląskie");
+        stringList.add("kujawsko-pomorskie");
+        stringList.add("lubelskie");
+        stringList.add("lubuskie");
+        stringList.add("łódzkie");
+        stringList.add("małopolskie");
+        stringList.add("mazowieckie");
+        stringList.add("opolskie");
+        stringList.add("podkarpackie");
+        stringList.add("podlaskie");
+        stringList.add("pomorskie");
+        stringList.add("śląskie");
+        stringList.add("świętokrzyskie");
+        stringList.add("warmińsko-mazurskie");
+        stringList.add("wielkopolskie");
+        stringList.add("zachodniopomorskie");
+
+        return stringList;
+
+    }
+
     @RequestMapping("")
     public String home() {
 
         return "/admin/home";
     }
 
-    /////////////////// users///////////////////
+    /////////////////// users/////////////////////////////////////////////////////////////////////
     @RequestMapping("/allUsers")
     public String all(Model model) {
         List<User> users = userService.findAll();
@@ -89,8 +117,8 @@ public class AdminController {
     }
 
     // search user
-    @RequestMapping("/search")
-    public String search(@RequestParam(name = "search") String search, Model model) {
+    @RequestMapping("/searchUser")
+    public String searchUser(@RequestParam(name = "search") String search, Model model) {
 
         List<User> users = userService.searchUser(search);
 
@@ -98,4 +126,87 @@ public class AdminController {
         return "admin/allUsers";
 
     }
+
+    /////////////////// institutions ///////////////////////////////////////////////////////////////////
+
+    @RequestMapping("/allInstitutions")
+    public String allInstitutions(Model model) {
+
+        List<Institution> institutions = institutionService.findAll();
+        model.addAttribute("institutions", institutions);
+
+        return "/admin/allInstitutions";
+    }
+    // add institution
+    @GetMapping("/addInstitutions")
+    public String addInstitution(Model model) {
+        model.addAttribute("institution", new Institution());
+        return "admin/addEditInstitution";
+    }
+
+    @PostMapping("/addInstitutions")
+    public String registrationUser(@Validated(RegistrationValidator.class) Institution institution, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "admin/addEditInstitution";
+        }
+       institutionService.save(institution);
+       model.addAttribute("registration", true);
+       return "forward:/admin/allInstitutions";
+    }
+
+    //edit institution
+    @GetMapping("/editInstitution/{id}")
+    public String editInstitution(Model model, @PathVariable Long id) {
+        model.addAttribute("institution", institutionService.findById(id));
+        return "admin/addEditInstitution";
+    }
+
+    @PostMapping("/editInstitution/{id}")
+    public String saveInstitution(@Validated(EditValidator.class) Institution institution, BindingResult result, @PathVariable Long id, Model model) {
+        if (result.hasErrors()) {
+            return "admin/addEditInstitution";
+        }
+
+        institutionService.save(institution);
+        return "forward:/admin/allInstitutions";
+    }
+
+    // delete institution
+    @RequestMapping("/deleteInstitution/{id}")
+    public String deleteInstitution(@PathVariable Long id, Model model) {
+        // if institution has gifts
+        Institution institution = institutionService.findById(id);
+        if (giftService.canInstitutionBeDeleted(institution)) {
+            model.addAttribute("institutionDelete", true);
+            model.addAttribute("institution",institution);
+            institutionService.deleteInstitution(institution);
+        } else {
+            model.addAttribute("Invalid", true);
+        }
+
+
+        return "forward:/admin/allInstitutions";
+    }
+
+//    // search institution
+    @RequestMapping("/searchInstitution")
+    public String searchInstitution(@RequestParam(name = "search") String search, Model model) {
+
+        List<Institution> institutions=institutionService.searchInstitution(search);
+
+
+        model.addAttribute("institutions", institutions);
+        return "admin/allInstitutions";
+
+    }
+
+    /////////////////// gifts ///////////////////////////////////////////////////////////////////
+
+    @RequestMapping("/allGifts")
+    public String allGifts(Model model) {
+        List<Gift> giftList = giftService.findAll();
+        model.addAttribute("gifts",giftList);
+        return "/admin/allGifts";
+    }
+
 }

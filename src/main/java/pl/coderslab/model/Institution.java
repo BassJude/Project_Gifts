@@ -27,7 +27,12 @@ public class Institution {
     @Column(length = 100)
     @NotBlank(groups = {RegistrationValidator.class, EditValidator.class})
     @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
-    private String help;
+    private String missionTarget; // who we help
+
+    @Column(length = 100)
+    @NotBlank(groups = {RegistrationValidator.class, EditValidator.class})
+    @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
+    private String needs; // what we need
 
     @Column(length = 255)
     @NotBlank(groups = {RegistrationValidator.class, EditValidator.class})
@@ -69,12 +74,20 @@ public class Institution {
         this.name = name;
     }
 
-    public String getHelp() {
-        return help;
+    public String getMissionTarget() {
+        return missionTarget;
     }
 
-    public void setHelp(String help) {
-        this.help = help;
+    public void setMissionTarget(String missionTarget) {
+        this.missionTarget = missionTarget;
+    }
+
+    public String getNeeds() {
+        return needs;
+    }
+
+    public void setNeeds(String needs) {
+        this.needs = needs;
     }
 
     public String getAddress() {
@@ -122,7 +135,7 @@ public class Institution {
         return "Institution{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", help='" + help + '\'' +
+
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +

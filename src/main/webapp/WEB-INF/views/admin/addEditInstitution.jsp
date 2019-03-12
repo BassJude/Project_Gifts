@@ -1,5 +1,5 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pl">
 <%@ include file="../fragments/head.jspf" %>
@@ -10,39 +10,43 @@
     <%@ include file="../fragments/navAdmin.jspf" %>
 </header>
 
-
+<%--<section class="login-page">--%>
 <div>
 
-    <h1>Edycja użytkownika</h1>
+    <h1>Edycja instytucji</h1>
 
-    <p>Id zmienianego usera: ${user.id}. Mail zmienianego użytkownika: ${user.email}</p>
-    <div>div</div>
-    <div>div</div>
-    <div>div</div>
+    <p>Id zmienianej instytucji: ${institution.id} </p>
 
-    <form:form method="post" modelAttribute="user">
-        <div>div</div>
-        <div>div</div>
-        <div>div</div>
+    <form:form method="post" modelAttribute="institution">
 
-        <p>Imię: <form:input path="firstName"/>
-            <form:errors path="firstName" cssClass="error" /></p>
+        <p>Nazwa: <form:textarea rows="5" cols="80" path="name"/>
+            <form:errors path="name" cssClass="error" /></p>
 
-        <p>Nazwisko: <form:input path="lastName"/>
-            <form:errors path="lastName" cssClass="error" /></p>
+        <p>Cel i misja <form:textarea rows="5" cols="80" path="missionTarget"/>
+            <form:errors path="missionTarget" cssClass="error" /></p>
 
-        <p>Czy jest superUserem <form:checkbox path="superUser"/>
-            <form:errors path="superUser" cssClass="error" /></p>
+        <p>Nasze potrzeby: <form:textarea rows="5" cols="80" path="needs"/>
+            <form:errors path="needs" cssClass="error" /></p>
 
 
-        <input type="submit" value="Zapisz">
+
+        <div>Adres: <form:textarea rows="5" cols="80" path="address"/>
+            <form:errors path="address" cssClass="error" /></div>
+
+        <div>Email: <form:textarea rows="5" cols="80" path="email"/>
+            <form:errors path="email" cssClass="error" /></div>
+
+        <div>Telefon:<form:textarea rows="5" cols="80" path="phone"/>
+            <form:errors path="phone" cssClass="error" /></div>
+
+        <div> Województwo: <form:select path="location" items="${locations}" />
+            <form:errors path="location" cssClass="error" /></div>
+
+
+        <div><input type="submit" value="Zapisz"></div>
 
 
     </form:form>
-
-    <div>div</div>
-    <div>div</div>
-    <div>div</div>
 
 
 
