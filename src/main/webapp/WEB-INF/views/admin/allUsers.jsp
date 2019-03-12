@@ -10,12 +10,35 @@
     <%@ include file="../fragments/navAdmin.jspf" %>
 </header>
 
-<section class="login-page">
-    <h1>Panel Administracyjny</h1>
-    <h2>Lista użytkowników</h2>
-    <h3>Wyszukiwarka użytkowników</h3>
+<%--<section class="login-page">--%>
+<section>
+
+    <c:choose>
+        <c:when test="${userDelete==true}">
+
+         <p class="error">Usunąłeś uzytkownika!</p>
+         <p class="error">Id: ${user.id}, email: ${user.email}, imię: ${user.firstName}, nazwisko: ${user.lastName}</p>
+        </c:when>
+
+        <c:when test="${Invalid==true}">
+
+            <p class="error">Nie możesz usunąć użytkownika. Użytkownik jest wskazywany przez rekordy w tabeli z darami!</p>
+        </c:when>
+
+        <c:when test="${AdminInvalid==true}">
+
+            <p class="error">Nie możesz usunąć użytkownika, który jest ostatnim adminem</p>
+        </c:when>
+
+
+        <c:otherwise>
+
+        </c:otherwise>
+    </c:choose>
+
+
     <form action="/admin/search" method="get">
-        Wpisz nazwisko: <input type="text" name="search" placeholder="nazwisko">
+        Wyszukaj użytkownika: <input type="text" name="search" placeholder="nazwisko">
 
         <input type="submit" value="szukaj" >
     </form>

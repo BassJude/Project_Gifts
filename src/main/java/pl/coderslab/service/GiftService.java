@@ -3,6 +3,7 @@ package pl.coderslab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.model.Gift;
+import pl.coderslab.model.User;
 import pl.coderslab.repository.GiftRepository;
 
 import java.util.List;
@@ -35,5 +36,16 @@ public class GiftService {
 
     public List<Gift> findAll() {
         return giftRepository.findAll();
+    }
+
+    public List<Gift> findUserGifts(User user) {
+        return giftRepository.findAllByUser(user);
+    }
+    public boolean canItBeDeleted(User user) {
+        if (findUserGifts(user).size()==0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

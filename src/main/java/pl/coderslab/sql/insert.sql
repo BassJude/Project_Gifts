@@ -15,9 +15,16 @@ INSERT INTO questions (answer1,answer2,answer3,answer4,good_answer,question) VAL
 "Obowiązki pracodawcy w zakresie BHP zostały szczególnie określone w:"),
 
 
-INSERT INTO users (login,password,firstName,lastName,city, street,number_of_home,email,last_test,passed,admin) VALUES
-("sowa","$2a$10$i7g/groj108JXj0qrTVpGO/FdPFBCO4i98fUhnsD0n7bFHafVsHWe","Adam","Pierzchała","Warszawa","Czapelska","40/20","email@email.pl",now(),false,false ),
-("krowa","$2a$10$i7g/groj108JXj0qrTVpGO/FdPFBCO4i98fUhnsD0n7bFHafVsHWe","Michał","Kowalski","Kraków","Wiktorska","10/95","michal@email.pl",null,false ,true ),
+INSERT INTO users (email,password,firstName,lastName,admin) VALUES
+("sowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true ),
+("mowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Ewelina","Musiał",false ),
+("krowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Anetka","Kowalczuk",true ),
+("kotek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Amelka","Pisera",false ),
+("piesek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Kamil","Magiera",false ),
+("kura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Piotr","Sucha",false ),
+("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false );
+
+
 
 /*
 INSERT INTO `plan` (`id`, `name`, `description`, `created`, `admin_id`) VALUES

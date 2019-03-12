@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 @Service
 public class UserService {
 
-   // private final static String REGEX = "\\W+";
+    // private final static String REGEX = "\\W+";
 
     @Autowired
     private UserRepository userRepository;
@@ -103,9 +103,25 @@ public class UserService {
 
         return "loginSucces";
     }
+
     // save user in session
     public void sessionStart(String email) {
         userSession.setUserInSession(userRepository.findUsersByEmail(email));
 
+    }
+
+    // is the last admin
+    public boolean isTheLastAdminToDetele(User user) {
+        if (user.isSuperUser()) {
+            if (userRepository.countBySuperUser(true) < 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // search
+    public List<User> searchUser(String search) {
+        return userRepository.findUserByLastNameContainingOrFirstNameContainingOrEmailContaining(search, search, search);
     }
 }
