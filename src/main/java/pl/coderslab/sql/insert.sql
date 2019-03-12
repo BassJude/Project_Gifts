@@ -33,8 +33,6 @@ INSERT INTO institutions (name,missionTarget,needs,address,email,phone,location)
 "dolnośląskie");
 
 
-
-
 INSERT INTO users (email,password,firstName,lastName,admin) VALUES
 ("sowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true ),
 ("antek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true ),
@@ -45,17 +43,14 @@ INSERT INTO users (email,password,firstName,lastName,admin) VALUES
 ("kura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Piotr","Sucha",false ),
 ("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false );
 
+INSERT INTO gifts (institution_id, user_id,bags,decsription, phone, city,zip_code,street,number_of_home, courier_decsription,pickup_time,send_time) VALUES
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00");
 
 
-/*
-INSERT INTO `plan` (`id`, `name`, `description`, `created`, `admin_id`) VALUES
-(1, 'Plan Jarski', NULL, '2018-10-17 14:27:05', 1);
-
-INSERT INTO `recipe` (`id`, `name`, `ingredients`, `description`, `created`, `updated`, `admin_id`, `preparation_time`, `preparation`) VALUES
-(1, 'Przepis 1', 'sałata', 'Opis przepisu 1', '2018-10-17 00:00:00', '2018-10-17 14:24:44', 1, 30,'Sałaty dokładnie myję i jeszcze dokładniej suszę - nie powinno być na liściach żadnych kropelek wody.'),
-(2, 'Przepis 2', 'sałata', 'Opis przepisu 2', '2018-10-16 00:00:00', '2018-10-17 14:24:44', 1, 30,'Sałaty dokładnie myję i jeszcze dokładniej suszę - nie powinno być na liściach żadnych kropelek wody.'),
-(3, 'Przepis 3', 'sałata', 'Opis przepisu 3', '2018-10-24 00:00:00', '2018-10-17 14:24:44', 1, 30,'Sałaty dokładnie myję i jeszcze dokładniej suszę - nie powinno być na liściach żadnych kropelek wody.');
-*/
 -- create - tworzy tabele na podstawie adnotacji encji, nie nadpisuje zmian
 --           none - nie wykonuje żadnych operacji
 --           drop-and-create - usunie a następnie utworzy, przy pracy uzywamy tego

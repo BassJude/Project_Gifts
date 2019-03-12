@@ -79,6 +79,9 @@ public class User {
 //        this.login = login;
 //    }
 
+    public String getFullName(){
+        return this.firstName+" "+this.lastName;
+    }
     public String getPassword() {
         return password;
     }
