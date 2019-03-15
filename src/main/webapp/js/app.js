@@ -1,51 +1,78 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 
-
-
     ///////////////// my code
 // step 1
     var checkboxSlide1 = document.querySelectorAll("input.firstStep");
+    var toGiveAway = "";
     console.log(checkboxSlide1);
 
     for (var i = 0; i < checkboxSlide1.length; i++) {
         checkboxSlide1[i].addEventListener("click", function () {
-            var toGiveAway = "";
+            toGiveAway = "";
 
             for (var i = 0; i < checkboxSlide1.length; i++) {
                 if (checkboxSlide1[i].checked) {
 
-                    toGiveAway += checkboxSlide1[i].nextElementSibling.nextElementSibling.innerHTML + "; ";
+                    toGiveAway += checkboxSlide1[i].nextElementSibling.nextElementSibling.innerHTML + ";<br> ";
                 }
             }
-            console.log(toGiveAway); // after enter into the tag
+            //  console.log(toGiveAway); // after enter into the tag
         })
     }
 
 
-
     // step 2
-    var checkboxSlide2 = document.querySelector("input.secondStep");
-    checkboxSlide2.addEventListener("input", function () {
-        console.log(checkboxSlide2.value); // after enter into the tag
+    var numberBags = document.querySelector("input.secondStep");
+    var numberBagsToSummary = document.querySelector(".formBags")
+    numberBags.addEventListener("input", function () {
+        console.log(this.value); // after enter into the tag
+        numberBagsToSummary.innerHTML = this.value + " worków. <br><br>Zawartość worków:<br> " + toGiveAway;
 
     })
 
 
-
 // step 4
     var radioSlide4 = document.querySelectorAll("input.fourthStep");
-    var selectedOrganization = "";
+    var organizationToSummary = document.querySelector(".formOrganization");
+    // console.log(organizationToSummary);
     for (var i = 0; i < radioSlide4.length; i++) {
         radioSlide4[i].addEventListener("click", function () {
-            selectedOrganization = this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML;
-            console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
+
+            organizationToSummary.innerHTML = "Dar dla: " + this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML;
+            // console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
 
 
         })
     }
 
+    // step 5
+    var street = document.getElementById("street");
+    var homeNumber = document.getElementById("homeNumber");
+    var city = document.getElementById("city");
+    var postcode = document.getElementById("postcode");
+    var phone = document.getElementById("phone");
+    var data = document.getElementById("data");
+    var time = document.getElementById("time");
+    var infoForCourier = document.getElementById("infoForCourier");
 
+    var summary1 = document.getElementById("summary1");
+    var summary2 = document.getElementById("summary2");
+
+    street.addEventListener("input", function () {
+        summary1.innerText=street.innerText;
+
+    })
+
+    city.addEventListener("input", function () {
+        summary1.nextElementSibling.innerHTML=city.innerText;
+
+    })
+
+    postcode.addEventListener("input", function () {
+        summary1.nextElementSibling.nextElementSibling.innerHTML=postcode.innerText;
+
+    })
 
 
 
@@ -309,8 +336,4 @@ document.addEventListener("DOMContentLoaded", function() {
     if (form !== null) {
         new FormSteps(form);
     }
-
-
-
-
 });
