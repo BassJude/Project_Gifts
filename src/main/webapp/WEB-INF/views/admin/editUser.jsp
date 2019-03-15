@@ -15,24 +15,22 @@
 
     <h1>Edycja użytkownika</h1>
 
-    <p>Id zmienianego usera: ${user.id}. Mail zmienianego użytkownika: ${user.email}</p>
-    <div>div</div>
-    <div>div</div>
-    <div>div</div>
+    <p style="font-size: 20px">Id zmienianego usera: ${user.id}. Mail zmienianego użytkownika: ${user.email}</p>
 
     <form:form method="post" modelAttribute="user">
-        <div>div</div>
-        <div>div</div>
-        <div>div</div>
 
-        <p>Imię: <form:input path="firstName"/>
-            <form:errors path="firstName" cssClass="error" /></p>
+    <div style="font-size: 20px" class="form-group">
+            Imię: <form:input path="firstName"/>
+            <form:errors path="firstName" cssClass="error" /></div>
 
-        <p>Nazwisko: <form:input path="lastName"/>
-            <form:errors path="lastName" cssClass="error" /></p>
+    <div style="font-size: 20px" class="form-group">
+            Nazwisko: <form:input path="lastName"/>
+            <form:errors path="lastName" cssClass="error" />
+        </div>
 
-        <p>Czy jest superUserem <form:checkbox path="superUser"/>
-            <form:errors path="superUser" cssClass="error" /></p>
+        <div style="font-size: 20px" class="form-group">
+            Czy jest superUserem <form:checkbox path="superUser"/>
+            <form:errors path="superUser" cssClass="error" /></div>
 
 
         <input type="submit" value="Zapisz">
@@ -40,9 +38,6 @@
 
     </form:form>
 
-    <div>div</div>
-    <div>div</div>
-    <div>div</div>
 
 
 

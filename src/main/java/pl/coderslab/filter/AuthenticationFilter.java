@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/users/*")
+@WebFilter("/user/*")
 public class AuthenticationFilter implements Filter {
     public void destroy() {
     }

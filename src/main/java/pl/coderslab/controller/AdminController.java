@@ -213,8 +213,7 @@ public class AdminController {
     @RequestMapping("/deleteGift/{id}")
     public String deleteGift(@PathVariable Long id, Model model) {
 
-
-        institutionService.deleteById(id);
+        giftService.deleteById(id);
         model.addAttribute("deleteGift", true);
 
         return "forward:/admin/allGifts";

@@ -15,35 +15,42 @@
 
     <h1>Edycja instytucji</h1>
 
-    <p>Id zmienianej instytucji: ${institution.id} </p>
+    <p style="font-size: 20px">Id zmienianej instytucji: ${institution.id} </p>
 
     <form:form method="post" modelAttribute="institution">
 
-        <p>Nazwa: <form:textarea rows="5" cols="80" path="name"/>
-            <form:errors path="name" cssClass="error" /></p>
+        <div style="font-size: 20px" class="form-group">
+            Nazwa: <form:textarea rows="1" cols="200" path="name"/>
+            <form:errors path="name" cssClass="error" /></div>
 
-        <p>Cel i misja <form:textarea rows="5" cols="80" path="missionTarget"/>
-            <form:errors path="missionTarget" cssClass="error" /></p>
+        <div style="font-size: 20px" class="form-group">
+            Cel i misja <form:textarea rows="2" cols="200" path="missionTarget"/>
+            <form:errors path="missionTarget" cssClass="error" /></div>
 
-        <p>Nasze potrzeby: <form:textarea rows="5" cols="80" path="needs"/>
-            <form:errors path="needs" cssClass="error" /></p>
+        <div style="font-size: 20px" class="form-group">
+            Nasze potrzeby: <form:textarea rows="2" cols="200" path="needs"/>
+            <form:errors path="needs" cssClass="error" /></div>
 
 
-
-        <div>Adres: <form:textarea rows="5" cols="80" path="address"/>
+        <div style="font-size: 20px" class="form-group">
+            Adres: <form:textarea rows="1" cols="200" path="address"/>
             <form:errors path="address" cssClass="error" /></div>
 
-        <div>Email: <form:textarea rows="5" cols="80" path="email"/>
+        <div style="font-size: 20px" class="form-group">
+            Email: <form:textarea rows="1" cols="200" path="email"/>
             <form:errors path="email" cssClass="error" /></div>
 
-        <div>Telefon:<form:textarea rows="5" cols="80" path="phone"/>
+        <div style="font-size: 20px" class="form-group">
+            Telefon:<form:textarea rows="1" cols="200" path="phone"/>
             <form:errors path="phone" cssClass="error" /></div>
 
-        <div> Województwo: <form:select path="location" items="${locations}" />
+        <div style="font-size: 20px" class="form-group">
+            Województwo: <form:select path="location" items="${locations}" />
             <form:errors path="location" cssClass="error" /></div>
 
 
-        <div><input type="submit" value="Zapisz"></div>
+        <div style="font-size: 20px" class="form-group">
+            <input type="submit" value="Zapisz"></div>
 
 
     </form:form>

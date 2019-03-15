@@ -19,7 +19,7 @@ public class Gift {
 
     @Column(length = 255)
     @Size(max = 255, message = "Maksymalnie 255 znaków", groups = {RegistrationValidator.class, EditValidator.class})
-    private String decsription;
+    private String decsription;  // to give Away
 
     @Column(length = 255, name = "courier_decsription")
     @Size(max = 255, message = "Maksymalnie 255 znaków", groups = {RegistrationValidator.class, EditValidator.class})

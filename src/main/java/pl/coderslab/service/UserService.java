@@ -51,7 +51,7 @@ public class UserService {
     public String checkRegistration(User user) {
         long value = userRepository.countByEmail(user.getEmail());
         if (value != 0) {
-            return "Email o podanej nazwie już istnieje, podaj inny login !";
+            return "Podany email już istnieje w bazie, podaj inny email !";
         }
         String email = user.getEmail();
         if (email.length() != email.replaceAll(" ", "").length()) {

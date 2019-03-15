@@ -31,12 +31,12 @@ public class User {
     private String email;
 
     @Size(min = 5, max = 30, message = "Hasło musi miec od 5 do 30 znaków", groups = RegistrationValidator.class)
-    @NotBlank(groups = RegistrationValidator.class)
+//    @NotBlank(groups = RegistrationValidator.class)
     private String password;
 
     @Transient
     @Size(min = 5, max = 30, message = "Hasło musi miec od 5 do 30 znaków", groups = RegistrationValidator.class)
-    @NotBlank(groups = RegistrationValidator.class)
+//    @NotBlank(groups = RegistrationValidator.class)
     private String password2;
 
     @Column(length = 100)

@@ -38,26 +38,25 @@
         </c:if></span>
 <form:form method="post" modelAttribute="user">
         <div style="font-size: 20px" class="form-group">
-
-            Podaj email:<form:input path="email" />
+            <form:input path="email"  placeholder="email" />
             <form:errors path="email" cssClass="error"/>
         </div>
         <div style="font-size: 20px" class="form-group">
-            Podaj hasło: <form:password path="password"/>
+            <form:password path="password" placeholder="hasło"/>
             <form:errors path="password" cssClass="error"/>
         </div>
         <div style="font-size: 20px" class="form-group">
-            Powtórz hasło:<form:password path="password2"/>
+            <form:password path="password2" placeholder="powtórz hasło"/>
             <form:errors path="password2" cssClass="error"/>
         </div>
 
     <div style="font-size: 20px" class="form-group">
-        Podaj imię:<form:input path="firstName"/>
+        <form:input path="firstName" placeholder="imię"/>
         <form:errors path="firstName" cssClass="error"/>
     </div>
 
     <div style="font-size: 20px" class="form-group">
-        Podaj nazwisko:<form:input path="lastName"/>
+        <form:input path="lastName" placeholder="nazwisko"/>
         <form:errors path="lastName" cssClass="error"/>
     </div>
 

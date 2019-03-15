@@ -60,7 +60,7 @@ public class HomeController {
 
         userService.save(user);
         model.addAttribute("registration", true);
-//        model.addAttribute("message", "Dziękujemy za rejestrację. Teraz możesz się zalogować.");
+
         return "/home";
     }
 
