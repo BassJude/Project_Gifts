@@ -19,7 +19,8 @@ public class Gift {
 
     @Column(length = 255)
     @Size(max = 255, message = "Maksymalnie 255 znaków", groups = {RegistrationValidator.class, EditValidator.class})
-    private String decsription;  // to give Away
+    @NotBlank(groups = {RegistrationValidator.class, EditValidator.class})
+    private String decsription;  // to give Away from user
 
     @Column(length = 255, name = "courier_decsription")
     @Size(max = 255, message = "Maksymalnie 255 znaków", groups = {RegistrationValidator.class, EditValidator.class})
@@ -53,6 +54,10 @@ public class Gift {
     @Size(max = 20, message = "Maksymalnie 20 znaków", groups = {RegistrationValidator.class, EditValidator.class})
     private String phone;
 
+    @Column(length = 30)
+    private String status;
+
+
     @Column(name = "pickup_time")
     private LocalDateTime pickUpTime;
 
@@ -66,6 +71,14 @@ public class Gift {
     //  opcjonalnie @ManyToOne(cascade = CascadeType.Merge)
     @ManyToOne
     private Institution institution;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;

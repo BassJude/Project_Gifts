@@ -7,8 +7,7 @@
 
 <header>
     <%@ include file="../fragments/nav.jspf" %>
-    <%@ include file="../fragments/navAdmin.jspf" %>
-</header>
+   </header>
 
 <%--<section class="login-page">--%>
 <div>
@@ -22,12 +21,12 @@
 
         <%--<c:when test="${Invalid==true}">--%>
 
-            <%--<p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>--%>
+        <%--<p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>--%>
         <%--</c:when>--%>
 
         <%--<c:when test="${registration==true}">--%>
 
-            <%--<p class="error">Dodałeś nową instytucje</p>--%>
+        <%--<p class="error">Dodałeś nową instytucje</p>--%>
         <%--</c:when>--%>
 
 
@@ -40,9 +39,9 @@
 
 
     <%--<form action="/admin/searchGifts" method="get">--%>
-        <%--Wyszukaj dary: <input type="text" name="search" placeholder="wyszukaj dary">--%>
+    <%--Wyszukaj dary: <input type="text" name="search" placeholder="wyszukaj dary">--%>
 
-        <%--<input type="submit" value="szukaj" >--%>
+    <%--<input type="submit" value="szukaj" >--%>
     <%--</form>--%>
 
     <table border="1" >
@@ -68,7 +67,7 @@
 
         </thead>
         <tbody>
-        <c:forEach items="${gifts}" var="gift">
+        <c:forEach items="${userGifts}" var="gift">
             <tr>
                 <td>${gift.id}</td>
                 <td>${gift.institution.name}</td>

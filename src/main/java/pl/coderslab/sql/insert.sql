@@ -43,12 +43,12 @@ INSERT INTO users (email,password,firstName,lastName,admin) VALUES
 ("kura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Piotr","Sucha",false ),
 ("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false );
 
-INSERT INTO gifts (institution_id, user_id,bags,decsription, phone, city,zip_code,street,number_of_home, courier_decsription,pickup_time,send_time) VALUES
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00");
+INSERT INTO gifts (institution_id, user_id,bags,decsription, phone, city,zip_code,street,number_of_home, courier_decsription,pickup_time,send_time,status) VALUES
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana");
 
 
 -- create - tworzy tabele na podstawie adnotacji encji, nie nadpisuje zmian

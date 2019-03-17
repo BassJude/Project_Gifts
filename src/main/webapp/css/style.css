@@ -784,7 +784,7 @@ form .form-section--columns .form-group label {
     justify-content: space-between;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    /*align-items: center;*/
 }
 
 /* line 210, scss/modules/_forms.scss */
@@ -1706,9 +1706,11 @@ footer .bottom-line--icons a img {
 }
 
 /* line 96, scss/style.scss */
-.form--steps form > div {
-    display: none;
-}
+dfsdf
+/*// TODO zmiana*/
+/*.form--steps form > div {*/
+    /*display: none;*/
+/*}*/
 
 /* line 100, scss/style.scss */
 .form--steps form h3 {
