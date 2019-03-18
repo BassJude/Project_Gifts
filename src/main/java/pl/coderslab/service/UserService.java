@@ -109,6 +109,33 @@ public class UserService {
         return "loginSucces";
     }
 
+    // change password
+    public String changePassword(String oldPass, String newPass1, String newPass2, Model model) {
+        User user = userSession.getUserInSession();
+        if (!BCrypt.checkpw(oldPass, user.getPassword())) {
+            model.addAttribute("passInvalid", true);
+            model.addAttribute("messagePass", "Podaj poprawne stare hasło");
+            return "Invalid";
+        }
+        if (!newPass1.equals(newPass2)) {
+            model.addAttribute("passInvalid", true);
+            model.addAttribute("messagePass", "Nowe hasła nie są identyczne");
+            return "Invalid";
+
+        }
+        if (newPass1.length()<5||newPass1.length()>30) {
+            model.addAttribute("passInvalid", true);
+            model.addAttribute("messagePass", "Nowe hasła musi mieć od 5 do 30 znaków");
+            return "Invalid";
+
+        }
+
+        userSession.getUserInSession().setPasswordHash(newPass1);
+        save(userSession.getUserInSession());
+
+        return "changeSucces";
+    }
+
     // save user in session
     public void sessionStart(String email) {
         userSession.setUserInSession(userRepository.findUsersByEmail(email));
@@ -124,12 +151,13 @@ public class UserService {
         }
         return false;
     }
-    public long quantitySuperUsers(){
+
+    public long quantitySuperUsers() {
         return userRepository.countBySuperUser(true);
     }
 
-    public long quantityEnableSuperUserAccount(){
-        return userRepository.countByCanLoginAndSuperUser(true,true);
+    public long quantityEnableSuperUserAccount() {
+        return userRepository.countByCanLoginAndSuperUser(true, true);
     }
 
     // search

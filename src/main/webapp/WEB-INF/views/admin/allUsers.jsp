@@ -30,6 +30,7 @@
             <p class="error">Nie możesz usunąć użytkownika, który aktualnie jest jedynym administratorem</p>
             <p class="error">Zawsze jeden użytkownik musi być administratorem</p>
             <p class="error">Nie można zablokować konta ostatniemu administratorowi</p>
+            <p class="error">Nie możesz usunąć samego siebie, będąc zalogowanym</p>
 
         </c:when>
 

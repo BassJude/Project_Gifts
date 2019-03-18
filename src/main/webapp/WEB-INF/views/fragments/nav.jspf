@@ -15,7 +15,7 @@
                             <li><a href="/admin">Strona Administracyjna</a></li>
                         </c:if>
 
-                        <li><a href="#">Profil</a></li>
+                        <li><a href="/user/profile">Profil</a></li>
                         <li><a href="#">Ustawienia</a></li>
                         <li><a href="/user/allMyGifts">Moje dary</a></li>
                         <li><a href="#">Moje zbiórki</a></li>

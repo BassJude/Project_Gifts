@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Gift;
 import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
+import pl.coderslab.model.UserSession;
 import pl.coderslab.repository.UserRepository;
 import pl.coderslab.service.GiftService;
 import pl.coderslab.service.InstitutionService;
@@ -34,7 +35,7 @@ public class AdminController {
     private GiftService giftService;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserSession userSession;
 
     @ModelAttribute("locations")
     public List<String> forSelect() {
@@ -105,6 +106,12 @@ public class AdminController {
         user.setPassword(userData.getPassword());
 
         userService.save(user);
+
+        if (user.getId().equals(userSession.getUserInSession().getId())) {
+            userSession.setUserInSession(user);
+            model.addAttribute("firstName", user.getFirstName());
+        }
+
         return "forward:/admin/allUsers";
     }
 
@@ -119,6 +126,10 @@ public class AdminController {
                 model.addAttribute("AdminInvalid", true);
                 return "forward:/admin/allUsers";
 
+            }
+            if (user.getId().equals(userSession.getUserInSession().getId())) {
+                model.addAttribute("AdminInvalid", true);
+                return "forward:/admin/allUsers";
             }
             model.addAttribute("userDelete", true);
             model.addAttribute("user", user);
