@@ -96,10 +96,15 @@ public class UserService {
         User user = userRepository.findUsersByEmail(email);
         if (!BCrypt.checkpw(password, user.getPassword())) {
             model.addAttribute("passInvalid", true);
-            model.addAttribute("messagePass", "Podaj prawidłowe hasło");
+            model.addAttribute("messagePass", "Błąd logowania, zły login lub hasło");
             return "Invalid";
-
         }
+        if (!user.isCanLogin()) {
+            model.addAttribute("loginInvalid", true);
+            model.addAttribute("messageLogin", "Konto zablokowane.");
+            return "Invalid";
+        }
+
 
         return "loginSucces";
     }
@@ -119,9 +124,21 @@ public class UserService {
         }
         return false;
     }
+    public long quantitySuperUsers(){
+        return userRepository.countBySuperUser(true);
+    }
+
+    public long quantityEnableSuperUserAccount(){
+        return userRepository.countByCanLoginAndSuperUser(true,true);
+    }
 
     // search
     public List<User> searchUser(String search) {
         return userRepository.findUserByLastNameContainingOrFirstNameContainingOrEmailContaining(search, search, search);
+    }
+
+    // find admins
+    public List<User> findAllAdmins(boolean check) {
+        return userRepository.findUsersBySuperUser(check);
     }
 }

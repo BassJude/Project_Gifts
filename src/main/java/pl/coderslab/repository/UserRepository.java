@@ -17,6 +17,12 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     long countBySuperUser(boolean check);
 
+    long countByCanLogin(boolean check);
+
+    long countByCanLoginAndSuperUser(boolean can, boolean superUser);
+
+    List<User> findUsersByCanLogin(boolean check);
+
     List<User> findUserByLastNameContainingOrFirstNameContainingOrEmailContaining(String lastName, String firstName,String email);
 
 }

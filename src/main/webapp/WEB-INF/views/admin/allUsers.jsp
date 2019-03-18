@@ -27,8 +27,13 @@
 
         <c:when test="${AdminInvalid==true}">
 
-            <p class="error">Nie możesz usunąć użytkownika, który jest ostatnim adminem</p>
+            <p class="error">Nie możesz usunąć użytkownika, który aktualnie jest jedynym administratorem</p>
+            <p class="error">Zawsze jeden użytkownik musi być administratorem</p>
+            <p class="error">Nie można zablokować konta ostatniemu administratorowi</p>
+
         </c:when>
+
+
 
 
         <c:otherwise>
@@ -53,6 +58,7 @@
             <td>Dary użytkownika</td>
             <td>Hasło</td>
             <td>Admin</td>
+            <td>Konto aktywne</td>
             <td>Edytuj</td>
             <td>Usuń</td>
         </tr>
@@ -65,9 +71,10 @@
                 <td>${user.email}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td><a style="color: #309125" href="/admin/gifts/${user.id}">Lista darów</a></td>
+                <td><a style="color: #309125" href="/admin/userGifts/${user.id}">Lista darów</a></td>
                 <td>${user.password}</td>
                 <td>${user.superUser}</td>
+                <td>${user.canLogin}</td>
 
                 <td><a style="color: #309125" href="/admin/editUser/${user.id}">Edytuj użytkownika</a></td>
                 <td><a style="color: #309125" href="/admin/deleteUser/${user.id}" onclick="return confirm('Czy na pewno skasować użytkownika?')">Usuń

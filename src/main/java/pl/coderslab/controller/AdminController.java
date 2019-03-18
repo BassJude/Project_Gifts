@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Gift;
 import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
+import pl.coderslab.repository.UserRepository;
 import pl.coderslab.service.GiftService;
 import pl.coderslab.service.InstitutionService;
 import pl.coderslab.service.UserService;
@@ -32,9 +33,12 @@ public class AdminController {
     @Autowired
     private GiftService giftService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @ModelAttribute("locations")
-    public List<String> forSelect(){
-        List<String> stringList=new ArrayList<>();
+    public List<String> forSelect() {
+        List<String> stringList = new ArrayList<>();
         stringList.add("dolnośląskie");
         stringList.add("kujawsko-pomorskie");
         stringList.add("lubelskie");
@@ -83,6 +87,18 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/editUser";
         }
+        // TODO uffffff
+// can not change last super user to false
+        if (userService.quantitySuperUsers()==1 && (!user.isSuperUser())) {
+            model.addAttribute("AdminInvalid", true);
+            user.setSuperUser(true);
+        }
+// can not disable last super user
+        if (userService.quantityEnableSuperUserAccount()==1 && (!user.isCanLogin())) {
+            model.addAttribute("AdminInvalid", true);
+            user.setCanLogin(true);
+        }
+
 // to complet data
         User userData = userService.findUserById(id);
         user.setEmail(userData.getEmail());
@@ -127,6 +143,29 @@ public class AdminController {
 
     }
 
+    @RequestMapping("/userGifts/{id}")
+    public String userGifts(@PathVariable Long id,Model model){
+User user = userService.findUserById(id);
+List<Gift> giftList = giftService.findUserGifts(user);
+        model.addAttribute("gifts", giftList);
+
+        model.addAttribute("user",user);
+        model.addAttribute("showUserGifts",true);
+
+        return "/admin/allGifts";
+    }
+
+    /////////////// admins //////////////
+
+    @RequestMapping("/allAdmins")
+    public String allAdmins(Model model) {
+        List<User> users = userService.findAllAdmins(true);
+        model.addAttribute("users", users);
+
+        return "/admin/allUsers";
+    }
+
+
     /////////////////// institutions ///////////////////////////////////////////////////////////////////
 
     @RequestMapping("/allInstitutions")
@@ -137,6 +176,7 @@ public class AdminController {
 
         return "/admin/allInstitutions";
     }
+
     // add institution
     @GetMapping("/addInstitutions")
     public String addInstitution(Model model) {
@@ -149,9 +189,9 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/addEditInstitution";
         }
-       institutionService.save(institution);
-       model.addAttribute("registration", true);
-       return "forward:/admin/allInstitutions";
+        institutionService.save(institution);
+        model.addAttribute("registration", true);
+        return "forward:/admin/allInstitutions";
     }
 
     //edit institution
@@ -178,7 +218,7 @@ public class AdminController {
         Institution institution = institutionService.findById(id);
         if (giftService.canInstitutionBeDeleted(institution)) {
             model.addAttribute("institutionDelete", true);
-            model.addAttribute("institution",institution);
+            model.addAttribute("institution", institution);
             institutionService.deleteInstitution(institution);
         } else {
             model.addAttribute("Invalid", true);
@@ -188,11 +228,11 @@ public class AdminController {
         return "forward:/admin/allInstitutions";
     }
 
-//    // search institution
+    //    // search institution
     @RequestMapping("/searchInstitution")
     public String searchInstitution(@RequestParam(name = "search") String search, Model model) {
 
-        List<Institution> institutions=institutionService.searchInstitution(search);
+        List<Institution> institutions = institutionService.searchInstitution(search);
 
 
         model.addAttribute("institutions", institutions);
@@ -205,7 +245,7 @@ public class AdminController {
     @RequestMapping("/allGifts")
     public String allGifts(Model model) {
         List<Gift> giftList = giftService.findAll();
-        model.addAttribute("gifts",giftList);
+        model.addAttribute("gifts", giftList);
         return "/admin/allGifts";
     }
 
@@ -219,6 +259,17 @@ public class AdminController {
         return "forward:/admin/allGifts";
     }
 
+    @RequestMapping("/giftsFromUsers/{id}")
+    public String giftsOneUser(Model model,@PathVariable Long id ) {
+Institution institution = institutionService.findById(id);
+List<Gift> giftList = giftService.hasInstitutionGifts(institution);
+model.addAttribute("gifts",giftList);
+model.addAttribute("showInstitutionGifts", true);
+model.addAttribute("institution",institution);
+model.addAttribute("quantity",giftList.size());
+
+        return "/admin/allGifts";
+    }
 
 
 }

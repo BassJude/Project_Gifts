@@ -49,7 +49,7 @@
         <tr>
             <td>Id</td>
             <td>Organizacja</td>
-            <td>Darczyńca</td>
+            <%--<td>Darczyńca</td>--%>
             <td>Ile worków</td>
             <td>Dary użytkownika</td>
             <td>Kontakt z darczyńcą</td>
@@ -61,8 +61,8 @@
             <td>Data odbioru paczki</td>
             <td>Przekazanie paczki</td>
             <td>Status</td>
-            <td>Edytuj</td>
-            <td>Usuń</td>
+            <%--<td>Edytuj</td>--%>
+            <%--<td>Usuń</td>--%>
         </tr>
 
         </thead>
@@ -71,7 +71,7 @@
             <tr>
                 <td>${gift.id}</td>
                 <td>${gift.institution.name}</td>
-                <td>${gift.user.fullName}</td>
+                <%--<td>${gift.user.fullName}</td>--%>
                 <td>${gift.bags}</td>
                 <td>${gift.decsription}</td>
                 <td>${gift.phone}</td>
@@ -83,9 +83,9 @@
                 <td>${gift.pickUpTime}</td>
                 <td>${gift.sendTime}</td>
                 <td>${gift.status}</td>
-                <td><a style="color: #309125" href="/admin/editGift/${gift.id}">Edytuj dar</a></td>
-                <td><a style="color: #309125" href="/admin/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń
-                    dar</a></td>
+                <%--<td><a style="color: #309125" href="/user/editGift/${gift.id}">Edytuj dar</a></td>--%>
+                <%--<td><a style="color: #309125" href="/user/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń--%>
+                    <%--dar</a></td>--%>
 
 
             </tr>

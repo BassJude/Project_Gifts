@@ -13,6 +13,21 @@
 
 <div>
 
+    <c:choose>
+
+
+        <c:when test="${AdminInvalid==true}">
+
+            <p class="error">Przynajmniej jeden użytkownik musi być administratorem</p>
+
+        </c:when>
+
+
+        <c:otherwise>
+
+        </c:otherwise>
+    </c:choose>
+
     <h1>Edycja użytkownika</h1>
 
     <p style="font-size: 20px">Id zmienianego usera: ${user.id}. Mail zmienianego użytkownika: ${user.email}</p>
@@ -31,6 +46,10 @@
         <div style="font-size: 20px" class="form-group">
             Czy jest superUserem <form:checkbox path="superUser"/>
             <form:errors path="superUser" cssClass="error" /></div>
+
+        <div style="font-size: 20px" class="form-group">
+            Czy konto jest aktywne <form:checkbox path="canLogin"/>
+            <form:errors path="canLogin" cssClass="error" /></div>
 
 
         <input type="submit" value="Zapisz">

@@ -20,6 +20,25 @@
 
         </c:when>
 
+        <c:when test="${showUserGifts==true}">
+
+            <p class="error">Lista darów wybranego użytkownika. Id: ${user.id}, Imię i nazwisko: ${user.fullName}</p>
+
+        </c:when>
+
+        <c:when test="${showUserGifts==true}">
+
+            <p class="error">Lista darów wybranego użytkownika. Id: ${user.id}, Imię i nazwisko: ${user.fullName}</p>
+
+        </c:when>
+
+        <c:when test="${showInstitutionGifts==true}">
+
+            <p class="error">Lista darów wybranej instytucji. Id: ${institution.id}, Nazwa: ${institution.name}</p>
+            <p class="error">Ilość pozycji: ${quantity}</p>
+
+        </c:when>
+
         <%--<c:when test="${Invalid==true}">--%>
 
             <%--<p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>--%>

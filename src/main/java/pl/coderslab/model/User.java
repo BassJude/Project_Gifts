@@ -53,10 +53,23 @@ public class User {
     @Column(name = "admin")
     private boolean superUser;
 
+    @Column(name="can_log_in")
+    private boolean canLogin;
+
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Gift> giftList=new ArrayList<>();
 
     // user (id, login, password, firstName, lastName, email, admin)
+
+
+    public boolean isCanLogin() {
+        return canLogin;
+    }
+
+    public void setCanLogin(boolean canLogin) {
+        this.canLogin = canLogin;
+    }
 
     public void setPasswordHash(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -142,10 +155,13 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-//                ", login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", password2='" + password2 + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", superUser=" + superUser +
+                ", canLogin=" + canLogin +
                 '}';
     }
 }

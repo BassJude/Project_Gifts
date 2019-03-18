@@ -58,6 +58,8 @@ public class UserController {
             return "/user/addGiftFullForm";
         }
 
+        gift.setStatus("Kurier");
+        gift.setUser(userSession.getUserInSession());
         giftService.save(gift);
         return "forward:/user/allMyGifts";
     }

@@ -57,6 +57,7 @@ public class HomeController {
         }
         String passToHash = user.getPassword(); // hash password
         user.setPasswordHash(passToHash);
+        user.setCanLogin(true);
 
         userService.save(user);
         model.addAttribute("registration", true);
