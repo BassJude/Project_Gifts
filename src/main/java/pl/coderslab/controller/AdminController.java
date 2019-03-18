@@ -60,6 +60,14 @@ public class AdminController {
         return stringList;
 
     }
+    @ModelAttribute("giftStatus")
+    public List<String> status(){
+        List<String> statusList = new ArrayList<>();
+        statusList.add("Kurier");
+        statusList.add("Odebrana");
+        statusList.add("Przekazana");
+        return statusList;
+    }
 
     @RequestMapping("")
     public String home() {
@@ -162,6 +170,7 @@ List<Gift> giftList = giftService.findUserGifts(user);
 
         model.addAttribute("user",user);
         model.addAttribute("showUserGifts",true);
+        model.addAttribute("quantity", giftList.size());
 
         return "/admin/allGifts";
     }

@@ -20,15 +20,11 @@
 
         </c:when>
 
-        <c:when test="${showUserGifts==true}">
-
-            <p class="error">Lista darów wybranego użytkownika. Id: ${user.id}, Imię i nazwisko: ${user.fullName}</p>
-
-        </c:when>
 
         <c:when test="${showUserGifts==true}">
 
             <p class="error">Lista darów wybranego użytkownika. Id: ${user.id}, Imię i nazwisko: ${user.fullName}</p>
+            <p class="error">Ilość pozycji: ${quantity}</p>
 
         </c:when>
 

@@ -15,19 +15,19 @@
                 <c:choose>
                     <c:when test="${registration==true}">
 
-                        Dziękujemy za rejestracje! Zaloguj się i zacznij pomagać!<br />
+                        <p style="color: #2350a5">Dziękujemy za rejestracje!</p> Zaloguj się i zacznij pomagać!<br />
                         Oddaj niechciane rzeczy w zaufane ręce
                     </c:when>
 
                     <c:when test="${login==true}">
 
-                        Zalogowałeś się. Zacznij pomagać!<br />
+                        <p style="color: #2350a5">Zalogowałeś się.</p>  Zacznij pomagać!<br />
                         Oddaj niechciane rzeczy w zaufane ręce
                     </c:when>
 
                     <c:when test="${logout==true}">
 
-                        Wylogowałeś się. Dziękujemy za wizyte!<br />
+                        <p style="color: #2350a5">Wylogowałeś się.</p> Dziękujemy za wizyte!<br />
                         Miłego dnia.
 
                     </c:when>

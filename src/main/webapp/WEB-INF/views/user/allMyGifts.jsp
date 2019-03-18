@@ -10,7 +10,7 @@
    </header>
 
 <%--<section class="login-page">--%>
-<div>
+<div class="myDiv">
 
     <c:choose>
         <c:when test="${deleteGift==true}">
@@ -44,6 +44,8 @@
     <%--<input type="submit" value="szukaj" >--%>
     <%--</form>--%>
 
+    <h2>Twoje dary</h2>
+
     <table border="1" >
         <thead>
         <tr>
@@ -59,7 +61,7 @@
             <td>Numer domu</td>
             <td>Informacja dla kuriera</td>
             <td>Data odbioru paczki</td>
-            <td>Przekazanie paczki</td>
+            <td>Data przekazanie paczki</td>
             <td>Status</td>
             <%--<td>Edytuj</td>--%>
             <%--<td>Usuń</td>--%>
