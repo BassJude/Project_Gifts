@@ -16,13 +16,15 @@
     <c:choose>
         <c:when test="${userDelete==true}">
 
-         <p class="error">Usunąłeś uzytkownika!</p>
-         <p class="error">Id: ${user.id}, email: ${user.email}, imię: ${user.firstName}, nazwisko: ${user.lastName}</p>
+            <p class="error">Usunąłeś uzytkownika!</p>
+            <p class="error">Id: ${user.id}, email: ${user.email}, imię: ${user.firstName},
+                nazwisko: ${user.lastName}</p>
         </c:when>
 
         <c:when test="${Invalid==true}">
 
-            <p class="error">Nie możesz usunąć użytkownika. Użytkownik jest wskazywany przez rekordy w tabeli z darami!</p>
+            <p class="error">Nie możesz usunąć użytkownika. Użytkownik jest wskazywany przez rekordy w tabeli z
+                darami!</p>
         </c:when>
 
         <c:when test="${AdminInvalid==true}">
@@ -35,8 +37,6 @@
         </c:when>
 
 
-
-
         <c:otherwise>
 
         </c:otherwise>
@@ -46,10 +46,10 @@
     <form action="/admin/searchUser" method="get">
         Wyszukaj użytkownika: <input type="text" name="search" placeholder="wpisz szukane hasło">
 
-        <input type="submit" value="szukaj" >
+        <input type="submit" value="szukaj">
     </form>
 
-    <table border="1" >
+    <table border="1">
         <thead>
         <tr>
             <td>Id</td>
@@ -57,7 +57,7 @@
             <td>Imię</td>
             <td>Nazwisko</td>
             <td>Dary użytkownika</td>
-            <td>Hasło</td>
+            <%--<td>Hasło</td>--%>
             <td>Admin</td>
             <td>Konto aktywne</td>
             <td>Edytuj</td>
@@ -73,12 +73,34 @@
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td><a style="color: #309125" href="/admin/userGifts/${user.id}">Lista darów</a></td>
-                <td>${user.password}</td>
-                <td>${user.superUser}</td>
-                <td>${user.canLogin}</td>
+                    <%--<td>${user.password}</td>--%>
+                <td>
+                    <c:choose>
+                        <c:when test="${user.superUser==true}">
+                            <span style="color: #309125">Admin</span>
+                        </c:when>
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
+
+                </td>
+                <td>
+
+                    <c:choose>
+                        <c:when test="${user.canLogin==true}">
+                            <span style="color: #309125">Aktywny</span>
+                        </c:when>
+                        <c:otherwise>
+                            <span style="color: #912824">Zablokowany</span>
+                        </c:otherwise>
+                    </c:choose>
+
+                </td>
 
                 <td><a style="color: #309125" href="/admin/editUser/${user.id}">Edytuj użytkownika</a></td>
-                <td><a style="color: #309125" href="/admin/deleteUser/${user.id}" onclick="return confirm('Czy na pewno skasować użytkownika?')">Usuń
+                <td><a style="color: #309125" href="/admin/deleteUser/${user.id}"
+                       onclick="return confirm('Czy na pewno skasować użytkownika?')">Usuń
                     użytkownika</a></td>
 
 
@@ -100,10 +122,10 @@
         <h3>Formularz kontaktowy</h3>
         <form>
             <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię" />
+                <input type="text" name="name" placeholder="Imię"/>
             </div>
             <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko" />
+                <input type="text" name="surname" placeholder="Nazwisko"/>
             </div>
 
             <div class="form-group">

@@ -24,6 +24,14 @@ INSERT INTO institutions (name,missionTarget,needs,address,email,phone,location)
 "+48 321 957 457",
 "małopolskie"),
 
+("Fundacja \"Olimpia\"",
+"Pomoc dla sportowców, którym kontuzja zniszczyła życie.",
+"ubrania, meble, AGD",
+"ul. Dolna 55, 04-081 Kraków",
+"kontakt@olimpia.pl",
+"+48 957 943 713",
+"małopolskie"),
+
 ("Fundacja \"Wyborcza\"",
 "Pomoc biednym dziennikarzom",
 "ubrania, jedzenie, sprzęt AGD, meble, zabawki",
@@ -33,22 +41,25 @@ INSERT INTO institutions (name,missionTarget,needs,address,email,phone,location)
 "dolnośląskie");
 
 
-INSERT INTO users (email,password,firstName,lastName,admin,can_log_in) VALUES
-("sowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true,true ),
-("antek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true,true ),
-("mowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Ewelina","Musiał",false,true ),
-("krowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Anetka","Kowalczuk",true,true ),
-("kotek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Amelka","Pisera",false,true ),
-("piesek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Kamil","Magiera",false,true ),
-("kura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Piotr","Sucha",false,true ),
-("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false,true );
+INSERT INTO users (email,password,firstName,lastName,admin,can_log_in,token) VALUES
+("sowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true,true,0 ),
+("antek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Adam","Pierzchała",true,true,0 ),
+("mowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Ewelina","Musiał",false,true,0 ),
+("krowa@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Anetka","Kowalczuk",true,true,0 ),
+("kotek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Amelka","Pisera",false,true ,0),
+("piesek@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Kamil","Magiera",false,true ,0),
+("kura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Piotr","Sucha",false,true ,0),
+("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false,true,0 );
 
 INSERT INTO gifts (institution_id, user_id,bags,decsription, phone, city,zip_code,street,number_of_home, courier_decsription,pickup_time,send_time,status) VALUES
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
-(1,1,5,"ubrania, zabawki, AGD","+48 654 897 264","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana");
+(1,1,5,"ubrania, zabawki, AGD","+48 953 897 666","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(2,2,2,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
+(3,3,6,"ubrania, zabawki, AGD","+48 654 897 444","Warszawa","65-478","Duża","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
+(4,4,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(1,3,4,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
+(2,2,5,"ubrania, zabawki, AGD","+48 654 897 444","Warszawa","65-478","Duża","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
+(3,1,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(1,1,6,"ubrania, zabawki, AGD","+48 432 897 549","Szczecin","65-478","Wiśni","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana");
 
 
 -- create - tworzy tabele na podstawie adnotacji encji, nie nadpisuje zmian

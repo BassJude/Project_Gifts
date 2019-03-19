@@ -30,13 +30,13 @@ public class User {
     @Size(max = 100, message = "Maksymalnie 100 znaków", groups = {RegistrationValidator.class, EditValidator.class})
     private String email;
 
-    @Size(min = 5, max = 30, message = "Hasło musi miec od 5 do 30 znaków", groups = RegistrationValidator.class)
-//    @NotBlank(groups = RegistrationValidator.class)
+    @Size(min = 8, max = 30, message = "Hasło musi miec od 8 do 30 znaków", groups = RegistrationValidator.class)
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=])(?=.*[A-Z])(?!.*\\s).{8,}$", message = "Hasło musi zawierać małą literę, dużą literę, cyfrę, conajmniej jeden znak !@#$%^&*()_+-= ", groups = {RegistrationValidator.class, EditValidator.class})
     private String password;
 
     @Transient
-    @Size(min = 5, max = 30, message = "Hasło musi miec od 5 do 30 znaków", groups = RegistrationValidator.class)
-//    @NotBlank(groups = RegistrationValidator.class)
+    @Size(min = 8, max = 30, message = "Hasło musi miec od 8 do 30 znaków", groups = RegistrationValidator.class)
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=])(?=.*[A-Z])(?!.*\\s).{8,}$", message = "Hasło musi zawierać małą literę, dużą literę, cyfrę, conajmniej jeden znak !@#$%^&*()_+-= ", groups = {RegistrationValidator.class, EditValidator.class})
     private String password2;
 
     @Column(length = 100)
@@ -56,12 +56,23 @@ public class User {
     @Column(name="can_log_in")
     private boolean canLogin;
 
+    @Column(length = 10)
+    private int token;
+
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Gift> giftList=new ArrayList<>();
 
     // user (id, login, password, firstName, lastName, email, admin)
 
+
+    public int getToken() {
+        return token;
+    }
+
+    public void setToken(int token) {
+        this.token = token;
+    }
 
     public boolean isCanLogin() {
         return canLogin;

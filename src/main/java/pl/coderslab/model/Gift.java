@@ -5,7 +5,9 @@ import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -27,6 +29,7 @@ public class Gift {
     private String courierDecsription;
 
     @Min(value = 1, message = "Ilość worków musi być liczbą")
+    @Max(value = 100, message = "Maksymalnie 100 worków")
     private int bags;
 
     @Column(length = 100)
@@ -59,10 +62,11 @@ public class Gift {
 
 
     @Column(name = "pickup_time")
-    private LocalDateTime pickUpTime;
+    @Pattern(regexp = "\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d:[0-5]\\d", message = "Wpisz według formatu: yyyy-MM-dd HH:mm", groups = {RegistrationValidator.class, EditValidator.class})
+    private LocalDateTime pickUpTime; // pick up by courier from user
 
     @Column(name = "send_time")
-    private LocalDateTime sendTime;
+    private LocalDateTime sendTime; // send to organisastion
 
     //  opcjonalnie @ManyToOne(cascade = CascadeType.Merge)
     @ManyToOne
