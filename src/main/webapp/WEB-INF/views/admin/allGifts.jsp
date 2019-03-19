@@ -103,19 +103,19 @@
                     <c:choose>
 
 
-                        <c:when test="${gift.status=='Kurier'}">
+                        <c:when test="${gift.status=='Courier'}">
 
                             <p style="color: #912824">Oczekiwanie na kuriera</p>
 
                         </c:when>
 
-                        <c:when test="${gift.status=='Odebrana'}">
+                        <c:when test="${gift.status=='PickUp'}">
 
                             <p style="color: #2350a5">Kurier odebrał paczkę</p>
 
                         </c:when>
 
-                        <c:when test="${gift.status=='Przekazana'}">
+                        <c:when test="${gift.status=='Sent'}">
 
                             <p style="color: green">Paczka przekazana instytucji</p>
 

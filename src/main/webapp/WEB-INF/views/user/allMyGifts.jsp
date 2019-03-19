@@ -44,7 +44,14 @@
     <%--<input type="submit" value="szukaj" >--%>
     <%--</form>--%>
 
+
     <h2>Twoje dary</h2>
+
+    <h1>Filtry paczek</h1>
+    <span style="font-size: 25px"><a href="/user/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/user/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/user/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/user/allMyGifts">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>
@@ -84,7 +91,34 @@
                 <td>${gift.courierDecsription}</td>
                 <td>${gift.pickUpTime}</td>
                 <td>${gift.sendTime}</td>
-                <td>${gift.status}</td>
+                <td>
+                    <c:choose>
+
+
+                        <c:when test="${gift.status=='Courier'}">
+
+                            <p style="color: #912824">Oczekiwanie na kuriera</p>
+
+                        </c:when>
+
+                        <c:when test="${gift.status=='PickUp'}">
+
+                            <p style="color: #2350a5">Kurier odebrał paczkę</p>
+
+                        </c:when>
+
+                        <c:when test="${gift.status=='Sent'}">
+
+                            <p style="color: green">Paczka przekazana instytucji</p>
+
+                        </c:when>
+
+
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <%--<td><a style="color: #309125" href="/user/editGift/${gift.id}">Edytuj dar</a></td>--%>
                 <%--<td><a style="color: #309125" href="/user/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń--%>
                     <%--dar</a></td>--%>

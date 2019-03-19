@@ -65,7 +65,7 @@
         <c:choose>
 
 
-            <c:when test="${gift.status=='Kurier'}">
+            <c:when test="${gift.status=='Courier'}">
 
                 <p style="font-size: 20px;color: #912824">Kurier odbierze przesyłkę od darczyńcy : ${gift.pickUpTime}</p>
                 <div style="font-size: 20px" class="form-group">
@@ -74,7 +74,7 @@
 
             </c:when>
 
-            <c:when test="${gift.status=='Odebrana'}">
+            <c:when test="${gift.status=='PickUp'}">
 
                 <p style="font-size: 20px; color: #2350a5">Kurier odebrał przesyłkę od darczyńcy : ${gift.pickUpTime}</p>
                 <div style="font-size: 20px" class="form-group">
@@ -83,9 +83,10 @@
 
             </c:when>
 
-            <c:when test="${gift.status=='Przekazana'}">
+            <c:when test="${gift.status=='Sent'}">
 
                 <p style="font-size: 20px;color: green">Paczka przekazana instytucji dnia: ${gift.sendTime}</p>
+                <form:hidden path="status"></form:hidden>
 
             </c:when>
 

@@ -11,4 +11,6 @@ public interface GiftRepository extends JpaRepository<Gift,Long> {
 
     List<Gift> findAllByUser(User user);
     List<Gift> findAllByInstitution(Institution institution);
+    List<Gift> findAllByStatusAndUserOrderByPickUpTimeDesc(String status, User user);
+
 }

@@ -84,6 +84,8 @@
 
 
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+            <p><form:errors path="institution" cssClass="error"/></p>
+
             <br><br>
 
             <c:forEach items="${institutionsUser}" var="institution">
@@ -92,6 +94,8 @@
                     <label>
 
                         <form:radiobutton path="institution.id" value="${institution.id}"/>
+
+
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">${institution.name}</div>

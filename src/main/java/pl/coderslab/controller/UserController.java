@@ -60,7 +60,7 @@ public class UserController {
             return "/user/addGiftFullForm";
         }
 
-        gift.setStatus("Kurier");
+        gift.setStatus("Courier");
         gift.setUser(userSession.getUserInSession());
         giftService.save(gift);
         return "forward:/user/allMyGifts";
@@ -74,6 +74,19 @@ public class UserController {
 
         return "/user/allMyGifts";
     }
+    // filters
+    @RequestMapping("/filter/{status}")
+    public String courier(Model model, @PathVariable String status) {
+        User user = userSession.getUserInSession();
+
+
+        List<Gift> giftList = giftService.findByStatusAndUser(status,user);
+        model.addAttribute("userGifts", giftList);
+//        model.addAttribute()
+
+        return "/user/allMyGifts";
+    }
+
 
     // edit profile
 

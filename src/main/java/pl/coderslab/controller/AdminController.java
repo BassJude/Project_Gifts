@@ -16,6 +16,7 @@ import pl.coderslab.service.UserService;
 import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,9 +64,9 @@ public class AdminController {
     @ModelAttribute("giftStatus")
     public List<String> status() {
         List<String> statusList = new ArrayList<>();
-        statusList.add("Kurier");
-        statusList.add("Odebrana");
-        statusList.add("Przekazana");
+        statusList.add("Courier");
+        statusList.add("PickUp");
+        statusList.add("Sent");
         return statusList;
     }
 
@@ -305,8 +306,27 @@ public class AdminController {
             return "admin/editGift";
         }
 
+        // to complet data
+        Gift currentGiftSql = giftService.findById(id);
+        gift.setUser(currentGiftSql.getUser());
+        gift.setInstitution(currentGiftSql.getInstitution());
+        // set DateTime
+        if("Courier".equals(currentGiftSql.getStatus())&&"PickUp".equals(gift.getStatus())) {
+            gift.setPickUpTime(LocalDateTime.now());
+        } else {
+            gift.setPickUpTime(currentGiftSql.getPickUpTime());
+        }
+        if (("Courier".equals(currentGiftSql.getStatus())||"PickUp".equals(currentGiftSql.getStatus()))&&"Sent".equals(gift.getStatus())) {
+            gift.setSendTime(LocalDateTime.now());
+        } else {
+            gift.setSendTime(currentGiftSql.getSendTime());
+        }
+
         giftService.save(gift);
-        return "forward:/admin/allGifts";
+        // TODO czy tak mozna
+        String link = "forward:/admin/userGifts/"+gift.getUser().getId();
+//        return "forward:/admin/allGifts";
+        return link;
     }
 
 

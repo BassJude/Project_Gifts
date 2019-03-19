@@ -59,4 +59,7 @@ public class GiftService {
 
 
     }
+    public List<Gift> findByStatusAndUser(String status, User user) {
+        return giftRepository.findAllByStatusAndUserOrderByPickUpTimeDesc(status,user);
+    }
 }
