@@ -10,7 +10,6 @@ import pl.coderslab.model.Gift;
 import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserSession;
-import pl.coderslab.repository.UserRepository;
 import pl.coderslab.service.GiftService;
 import pl.coderslab.service.InstitutionService;
 import pl.coderslab.service.UserService;
@@ -60,8 +59,9 @@ public class AdminController {
         return stringList;
 
     }
+
     @ModelAttribute("giftStatus")
-    public List<String> status(){
+    public List<String> status() {
         List<String> statusList = new ArrayList<>();
         statusList.add("Kurier");
         statusList.add("Odebrana");
@@ -98,12 +98,12 @@ public class AdminController {
         }
         // TODO uffffff
 // can not change last super user to false
-        if (userService.quantitySuperUsers()==1 && (!user.isSuperUser())) {
+        if (userService.quantitySuperUsers() == 1 && (!user.isSuperUser())) {
             model.addAttribute("AdminInvalid", true);
             user.setSuperUser(true);
         }
 // can not disable last super user
-        if (userService.quantityEnableSuperUserAccount()==1 && (!user.isCanLogin())) {
+        if (userService.quantityEnableSuperUserAccount() == 1 && (!user.isCanLogin())) {
             model.addAttribute("AdminInvalid", true);
             user.setCanLogin(true);
         }
@@ -135,6 +135,7 @@ public class AdminController {
                 return "forward:/admin/allUsers";
 
             }
+            // can not delete currently logged user
             if (user.getId().equals(userSession.getUserInSession().getId())) {
                 model.addAttribute("AdminInvalid", true);
                 return "forward:/admin/allUsers";
@@ -163,13 +164,13 @@ public class AdminController {
     }
 
     @RequestMapping("/userGifts/{id}")
-    public String userGifts(@PathVariable Long id,Model model){
-User user = userService.findUserById(id);
-List<Gift> giftList = giftService.findUserGifts(user);
+    public String userGifts(@PathVariable Long id, Model model) {
+        User user = userService.findUserById(id);
+        List<Gift> giftList = giftService.findUserGifts(user);
         model.addAttribute("gifts", giftList);
 
-        model.addAttribute("user",user);
-        model.addAttribute("showUserGifts",true);
+        model.addAttribute("user", user);
+        model.addAttribute("showUserGifts", true);
         model.addAttribute("quantity", giftList.size());
 
         return "/admin/allGifts";
@@ -278,17 +279,34 @@ List<Gift> giftList = giftService.findUserGifts(user);
 
         return "forward:/admin/allGifts";
     }
-
+// link inside controller allInstitutions
     @RequestMapping("/giftsFromUsers/{id}")
-    public String giftsOneUser(Model model,@PathVariable Long id ) {
-Institution institution = institutionService.findById(id);
-List<Gift> giftList = giftService.hasInstitutionGifts(institution);
-model.addAttribute("gifts",giftList);
-model.addAttribute("showInstitutionGifts", true);
-model.addAttribute("institution",institution);
-model.addAttribute("quantity",giftList.size());
+    public String giftsOneUser(Model model, @PathVariable Long id) {
+        Institution institution = institutionService.findById(id);
+        List<Gift> giftList = giftService.hasInstitutionGifts(institution);
+        model.addAttribute("gifts", giftList);
+        model.addAttribute("showInstitutionGifts", true);
+        model.addAttribute("institution", institution);
+        model.addAttribute("quantity", giftList.size());
 
         return "/admin/allGifts";
+    }
+
+    //edit gift
+    @GetMapping("/editGift/{id}")
+    public String editGift(Model model, @PathVariable Long id) {
+        model.addAttribute("gift", giftService.findById(id));
+        return "admin/editGift";
+    }
+
+    @PostMapping("/editGift/{id}")
+    public String saveGift(@Validated(EditValidator.class) Gift gift, BindingResult result, @PathVariable Long id, Model model) {
+        if (result.hasErrors()) {
+            return "admin/editGift";
+        }
+
+        giftService.save(gift);
+        return "forward:/admin/allGifts";
     }
 
 

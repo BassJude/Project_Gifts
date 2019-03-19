@@ -62,7 +62,7 @@ public class Gift {
 
 
     @Column(name = "pickup_time")
-    @Pattern(regexp = "\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d:[0-5]\\d", message = "Wpisz według formatu: yyyy-MM-dd HH:mm", groups = {RegistrationValidator.class, EditValidator.class})
+    @Pattern(regexp = "\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d:[0-5]\\d", message = "Wpisz według formatu: yyyy-MM-dd HH:mm", groups = {RegistrationValidator.class})
     private LocalDateTime pickUpTime; // pick up by courier from user
 
     @Column(name = "send_time")

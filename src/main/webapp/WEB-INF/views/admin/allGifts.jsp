@@ -98,7 +98,37 @@
                 <td>${gift.courierDecsription}</td>
                 <td>${gift.pickUpTime}</td>
                 <td>${gift.sendTime}</td>
-                <td>${gift.status}</td>
+                <td>
+
+                    <c:choose>
+
+
+                        <c:when test="${gift.status=='Kurier'}">
+
+                            <p style="color: #912824">Oczekiwanie na kuriera</p>
+
+                        </c:when>
+
+                        <c:when test="${gift.status=='Odebrana'}">
+
+                            <p style="color: #2350a5">Kurier odebrał paczkę</p>
+
+                        </c:when>
+
+                        <c:when test="${gift.status=='Przekazana'}">
+
+                            <p style="color: green">Paczka przekazana instytucji</p>
+
+                        </c:when>
+
+
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
+
+
+                </td>
                 <td><a style="color: #309125" href="/admin/editGift/${gift.id}">Edytuj dar</a></td>
                 <td><a style="color: #309125" href="/admin/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń
                     dar</a></td>

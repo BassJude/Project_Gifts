@@ -52,13 +52,13 @@ INSERT INTO users (email,password,firstName,lastName,admin,can_log_in,token) VAL
 ("bura@coders.pl","$2a$10$OLUmD1O93EAS9/jzWzKA7OflshzwXnQT.Ix4AizFrqg16oe4cMwq6","Michał","Dzięcioł",false,true,0 );
 
 INSERT INTO gifts (institution_id, user_id,bags,decsription, phone, city,zip_code,street,number_of_home, courier_decsription,pickup_time,send_time,status) VALUES
-(1,1,5,"ubrania, zabawki, AGD","+48 953 897 666","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
-(2,2,2,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
+(1,1,5,"ubrania, zabawki, AGD","+48 953 897 666","Wrocław","65-478","Drukarska","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00",null,"Kurier"),
+(2,2,2,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00",null,"Odebrana"),
 (3,3,6,"ubrania, zabawki, AGD","+48 654 897 444","Warszawa","65-478","Duża","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
-(4,4,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
-(1,3,4,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Odebrana"),
+(4,4,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00",null,"Kurier"),
+(1,3,4,"ubrania, zabawki, AGD","+48 627 897 555","Kraków","65-478","Wiktorka","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00",null,"Odebrana"),
 (2,2,5,"ubrania, zabawki, AGD","+48 654 897 444","Warszawa","65-478","Duża","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana"),
-(3,1,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Kurier"),
+(3,1,3,"ubrania, zabawki, AGD","+48 957 897 866","Katowice","65-478","Mała","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00",null,"Kurier"),
 (1,1,6,"ubrania, zabawki, AGD","+48 432 897 549","Szczecin","65-478","Wiśni","65/45","Proszę dzwonić przed przyjazdem","2019-03-24 00:00:00","2019-04-24 00:00:00","Przekazana");
 
 

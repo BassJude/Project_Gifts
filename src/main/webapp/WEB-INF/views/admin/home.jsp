@@ -11,7 +11,7 @@
 </header>
 
 <section class="login-page">
-    <h1>Panel Administracyjny</h1>
+
     <h2>Panel Administracyjny</h2>
 
 </section>
