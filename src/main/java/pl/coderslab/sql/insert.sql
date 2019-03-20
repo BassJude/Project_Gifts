@@ -32,8 +32,8 @@ INSERT INTO institutions (name,missionTarget,needs,address,email,phone,location)
 "+48 957 943 713",
 "małopolskie"),
 
-("Fundacja \"Wyborcza\"",
-"Pomoc biednym dziennikarzom",
+("Fundacja \"Aviva\"",
+"Pomoc osobom chorym na raka",
 "ubrania, jedzenie, sprzęt AGD, meble, zabawki",
 "ul. Jakaś 17, 04-081 Wrocław",
 "kontakt@wyborcza.pl",

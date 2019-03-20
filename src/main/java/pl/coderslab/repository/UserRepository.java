@@ -5,7 +5,7 @@ import pl.coderslab.model.User;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
 //    long countByLogin(String login);
 
@@ -23,6 +23,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     List<User> findUsersByCanLogin(boolean check);
 
-    List<User> findUserByLastNameContainingOrFirstNameContainingOrEmailContaining(String lastName, String firstName,String email);
+    List<User> findUserByLastNameContainingOrFirstNameContainingOrEmailContaining(String lastName, String firstName, String email);
 
 }

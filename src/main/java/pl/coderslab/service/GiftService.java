@@ -52,14 +52,17 @@ public class GiftService {
         }
     }
 
-    public List<Gift> hasInstitutionGifts(Institution institution) {return giftRepository.findAllByInstitution(institution);}
+    public List<Gift> hasInstitutionGifts(Institution institution) {
+        return giftRepository.findAllByInstitution(institution);
+    }
 
     public boolean canInstitutionBeDeleted(Institution institution) {
-        return hasInstitutionGifts(institution).size()==0;
+        return hasInstitutionGifts(institution).size() == 0;
 
 
     }
+
     public List<Gift> findByStatusAndUser(String status, User user) {
-        return giftRepository.findAllByStatusAndUserOrderByPickUpTimeDesc(status,user);
+        return giftRepository.findAllByStatusAndUserOrderByPickUpTimeDesc(status, user);
     }
 }

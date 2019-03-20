@@ -53,7 +53,7 @@ public class User {
     @Column(name = "admin")
     private boolean superUser;
 
-    @Column(name="can_log_in")
+    @Column(name = "can_log_in")
     private boolean canLogin;
 
     @Column(length = 10)
@@ -61,7 +61,7 @@ public class User {
 
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Gift> giftList=new ArrayList<>();
+    private List<Gift> giftList = new ArrayList<>();
 
     // user (id, login, password, firstName, lastName, email, admin)
 
@@ -103,9 +103,10 @@ public class User {
 //        this.login = login;
 //    }
 
-    public String getFullName(){
-        return this.firstName+" "+this.lastName;
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
     }
+
     public String getPassword() {
         return password;
     }

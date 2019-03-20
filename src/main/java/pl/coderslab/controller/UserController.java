@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping("/addGiftFullForm")
-    public String postGiftFullForm(@Validated(RegistrationValidator.class) Gift gift, BindingResult result, Model model) {
+    public String postGiftFullForm(@Validated(RegistrationValidator.class) Gift gift, BindingResult result) {
         if (result.hasErrors()) {
             return "/user/addGiftFullForm";
         }
@@ -74,13 +74,14 @@ public class UserController {
 
         return "/user/allMyGifts";
     }
+
     // filters
     @RequestMapping("/filter/{status}")
     public String courier(Model model, @PathVariable String status) {
         User user = userSession.getUserInSession();
 
 
-        List<Gift> giftList = giftService.findByStatusAndUser(status,user);
+        List<Gift> giftList = giftService.findByStatusAndUser(status, user);
         model.addAttribute("userGifts", giftList);
 //        model.addAttribute()
 
@@ -94,10 +95,7 @@ public class UserController {
     public String profile(Model model) {
         model.addAttribute("user", userSession.getUserInSession());
 
-        // TODO test porobić
-//        model.addAttribute("user", userService.findUserById(userSession.getUserInSession().getId()));
         // TODO pytanie !!!! gubi ID
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + userSession.getUserInSession().toString());
 
         return "user/profile";
     }
@@ -107,7 +105,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/profile";
         }
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + userSession.getUserInSession().toString());
+
 // to complet data
         User userData = userSession.getUserInSession();
         user.setId(userData.getId());

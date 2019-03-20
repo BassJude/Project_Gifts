@@ -11,7 +11,7 @@
 </header>
 
 
-<div>
+<div class="myDiv">
 
     <h2>Zmiana hasła</h2>
 
@@ -31,10 +31,10 @@
         </c:choose>
 
     <form action="/user/changePassword" method="post">
-        <input type="password" name="userPassword" placeholder="stare hasło">
-        <input type="password" name="password1" placeholder="nowe hasło">
-        <input type="password" name="password2" placeholder="powtórz nowe hasło">
-        <input type="submit" value="Zmień hasło">
+        <input style="width: 200px;height: 40px; font-size: 20px" type="password" name="userPassword" placeholder="stare hasło">
+        <input style="width: 200px;height: 40px; font-size: 20px" type="password" name="password1" placeholder="nowe hasło">
+        <input style="width: 200px;height: 40px; font-size: 20px" type="password" name="password2" placeholder="powtórz nowe hasło">
+        <input style="width: 200px;height: 40px; font-size: 20px" type="submit" value="Zmień hasło">
     </form>
 
 

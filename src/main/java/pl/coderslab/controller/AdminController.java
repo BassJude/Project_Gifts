@@ -97,13 +97,13 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/editUser";
         }
-        // TODO uffffff
-// can not change last super user to false
+
+// can not change last admin to false
         if (userService.quantitySuperUsers() == 1 && (!user.isSuperUser())) {
             model.addAttribute("AdminInvalid", true);
             user.setSuperUser(true);
         }
-// can not disable last super user
+// can not disable account last admin
         if (userService.quantityEnableSuperUserAccount() == 1 && (!user.isCanLogin())) {
             model.addAttribute("AdminInvalid", true);
             user.setCanLogin(true);
@@ -280,7 +280,8 @@ public class AdminController {
 
         return "forward:/admin/allGifts";
     }
-// link inside controller allInstitutions
+
+    // link inside controller allInstitutions
     @RequestMapping("/giftsFromUsers/{id}")
     public String giftsOneUser(Model model, @PathVariable Long id) {
         Institution institution = institutionService.findById(id);
@@ -311,22 +312,21 @@ public class AdminController {
         gift.setUser(currentGiftSql.getUser());
         gift.setInstitution(currentGiftSql.getInstitution());
         // set DateTime
-        if("Courier".equals(currentGiftSql.getStatus())&&"PickUp".equals(gift.getStatus())) {
+        if ("Courier".equals(currentGiftSql.getStatus()) && "PickUp".equals(gift.getStatus())) {
             gift.setPickUpTime(LocalDateTime.now());
         } else {
             gift.setPickUpTime(currentGiftSql.getPickUpTime());
         }
-        if (("Courier".equals(currentGiftSql.getStatus())||"PickUp".equals(currentGiftSql.getStatus()))&&"Sent".equals(gift.getStatus())) {
+        if (("Courier".equals(currentGiftSql.getStatus()) || "PickUp".equals(currentGiftSql.getStatus())) && "Sent".equals(gift.getStatus())) {
             gift.setSendTime(LocalDateTime.now());
         } else {
             gift.setSendTime(currentGiftSql.getSendTime());
         }
 
         giftService.save(gift);
-        // TODO czy tak mozna
-        String link = "forward:/admin/userGifts/"+gift.getUser().getId();
+
 //        return "forward:/admin/allGifts";
-        return link;
+        return "forward:/admin/userGifts/" + gift.getUser().getId();
     }
 
 

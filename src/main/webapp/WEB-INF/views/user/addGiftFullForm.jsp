@@ -157,7 +157,7 @@
                     <h4>Termin odbioru</h4>
                     <div class="form-group form-group--inline">
                         <label> Data
-                            <form:input path="pickUpTime" placeholder="data"/>
+                            <form:input path="pickUpTime" placeholder="data" type="datetime-local" style="width: 200px;height: 40px; font-size: 20px"/>
                             <form:errors path="pickUpTime" cssClass="error"/>
                         </label>
                     </div>

@@ -5,7 +5,10 @@ import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -57,9 +60,8 @@ public class Gift {
     @Column(length = 30)
     private String status;
 
-//TODO bledy przy walidacji daty
+
     @Column(name = "pickup_time")
-//    @Pattern(regexp = "\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d:[0-5]\\d", message = "Wpisz według formatu: yyyy-MM-dd HH:mm", groups = RegistrationValidator.class)
     private LocalDateTime pickUpTime; // pick up by courier from user
 
     @Column(name = "send_time")
@@ -71,7 +73,7 @@ public class Gift {
 
     //  opcjonalnie @ManyToOne(cascade = CascadeType.Merge)
     @ManyToOne
-    @NotNull(message = "Wybierz instytucje",groups = RegistrationValidator.class)
+    @NotNull(message = "Wybierz instytucje", groups = RegistrationValidator.class)
     private Institution institution;
 
     public String getStatus() {

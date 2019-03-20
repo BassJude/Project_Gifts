@@ -15,9 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (checkboxSlide1[i].checked) {
 
                     toGiveAway += checkboxSlide1[i].nextElementSibling.nextElementSibling.innerHTML + ";<br> ";
+                    // console.log(toGiveAway);
                 }
             }
-            //  console.log(toGiveAway); // after enter into the tag
+             console.log(toGiveAway); // after enter into the tag
         })
     }
 
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         radioSlide4[i].addEventListener("click", function () {
 
             organizationToSummary.innerHTML = "Dar dla: " + this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML;
-            // console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
+            console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
 
 
         })

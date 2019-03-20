@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserSession;
 import pl.coderslab.service.UserService;
@@ -31,7 +28,8 @@ public class HomeController {
 
         return "home";
     }
-// TODO do zrobienia
+
+    // TODO do zrobienia
     @RequestMapping("/aboutUs")
     public String aboutUs() {
         return "/aboutUs";
@@ -40,7 +38,7 @@ public class HomeController {
     // registration user
     @GetMapping("/registration")
     public String registrationUser(Model model) {
-        model.addAttribute("user",new User());
+        model.addAttribute("user", new User());
         return "/registration";
     }
 
@@ -106,5 +104,21 @@ public class HomeController {
         model.addAttribute("logout", true);
         return "/home";
     }
+
+    // recover password
+    @RequestMapping("/recoverPassword")
+    public String recoverPass() {
+
+        // TODO jak ma wygladac link w mailu? Czy w linku oprócz tokena ma być id uzytkownika?
+
+        return "redirect:" + userService.recoverPassword();
+    }
+
+    @RequestMapping("/token/{token}")
+    @ResponseBody
+    public String token(@PathVariable String token) {
+        return "Dziala/" + token;
+    }
+
 
 }

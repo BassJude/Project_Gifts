@@ -9,8 +9,7 @@ import pl.coderslab.repository.UserRepository;
 import pl.coderslab.utils.BCrypt;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Random;
 
 @Service
 public class UserService {
@@ -123,7 +122,7 @@ public class UserService {
             return "Invalid";
 
         }
-        if (newPass1.length()<5||newPass1.length()>30) {
+        if (newPass1.length() < 5 || newPass1.length() > 30) {
             model.addAttribute("passInvalid", true);
             model.addAttribute("messagePass", "Nowe hasła musi mieć od 5 do 30 znaków");
             return "Invalid";
@@ -168,5 +167,20 @@ public class UserService {
     // find admins
     public List<User> findAllAdmins(boolean check) {
         return userRepository.findUsersBySuperUser(check);
+    }
+
+    //recover password
+    public String recoverPassword() {
+// token
+        Random generator = new Random();
+        int number1 = generator.nextInt(1000000) + 1;
+        int number2 = generator.nextInt(1000000) + 1;
+        int number3 = generator.nextInt(1000000) + 1;
+        int number4 = generator.nextInt(1000000) + 1;
+        String token = number1 + "-" + number2 + "-" + number3 + "-" + number4;
+
+        return "http://localhost:8080/token/" + token;
+
+
     }
 }

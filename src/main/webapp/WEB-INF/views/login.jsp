@@ -20,7 +20,7 @@
             <input type="password" name="pass" placeholder="Hasło" value="${pass}"/>
             <span class="error" ><c:if test="${passInvalid==true}">${messagePass}</c:if></span>
 
-            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+            <a href="/recoverPassword" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">
