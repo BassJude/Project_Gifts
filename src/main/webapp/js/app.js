@@ -4,21 +4,21 @@ document.addEventListener("DOMContentLoaded", function() {
     ///////////////// my code
 // step 1
     var checkboxSlide1 = document.querySelectorAll("input.firstStep");
-    var toGiveAway = "";
-    console.log(checkboxSlide1);
+    var toGiveAway = document.querySelector(".toGiveAway");
+    // console.log(toGiveAway);
 
     for (var i = 0; i < checkboxSlide1.length; i++) {
         checkboxSlide1[i].addEventListener("click", function () {
-            toGiveAway = "";
+            toGiveAway.innerHTML = "";
 
             for (var i = 0; i < checkboxSlide1.length; i++) {
                 if (checkboxSlide1[i].checked) {
 
-                    toGiveAway += checkboxSlide1[i].nextElementSibling.nextElementSibling.innerHTML + ";<br> ";
-                    // console.log(toGiveAway);
+                    toGiveAway.innerHTML += checkboxSlide1[i].nextElementSibling.nextElementSibling.innerHTML + ";<br> ";
+
                 }
             }
-             console.log(toGiveAway); // after enter into the tag
+         //    console.log(toGiveAway.innerHTML); // after enter into the tag
         })
     }
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var numberBagsToSummary = document.querySelector(".formBags")
     numberBags.addEventListener("input", function () {
         console.log(this.value); // after enter into the tag
-        numberBagsToSummary.innerHTML = this.value + " worków. <br><br>Zawartość worków:<br> " + toGiveAway;
+        numberBagsToSummary.innerHTML = "Ilość worków: "+this.value;
 
     })
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var city = document.getElementById("city");
     var postcode = document.getElementById("postcode");
     var phone = document.getElementById("phone");
-    var data = document.getElementById("data");
+    var date = document.getElementById("data");
     var time = document.getElementById("time");
     var infoForCourier = document.getElementById("infoForCourier");
 
@@ -61,18 +61,35 @@ document.addEventListener("DOMContentLoaded", function() {
     var summary2 = document.getElementById("summary2");
 
     street.addEventListener("input", function () {
-        summary1.innerText=street.innerText;
+        summary1.innerText=this.value;
 
+    })
+    homeNumber.addEventListener("input",function () {
+        summary1.innerText=street.value+" "+this.value;
     })
 
     city.addEventListener("input", function () {
-        summary1.nextElementSibling.innerHTML=city.innerText;
+        summary1.nextElementSibling.innerHTML=this.value;
 
     })
 
     postcode.addEventListener("input", function () {
-        summary1.nextElementSibling.nextElementSibling.innerHTML=postcode.innerText;
+        summary1.nextElementSibling.nextElementSibling.innerHTML=this.value;
 
+    })
+    phone.addEventListener("input",function () {
+        summary1.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML=this.value;
+
+    })
+    date.addEventListener("input", function () {
+        summary2.innerText= this.value;
+    })
+    time.addEventListener("input",function () {
+        summary2.nextElementSibling.innerHTML=this.value;
+
+    })
+    infoForCourier.addEventListener("input", function () {
+        summary2.nextElementSibling.nextElementSibling.innerHTML=this.value;
     })
 
 

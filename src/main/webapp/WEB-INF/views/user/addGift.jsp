@@ -310,8 +310,9 @@
                                     <li>
                                         <span class="icon icon-bag"></span>
                                         <span class="summary--text formBags" >
-                                            4 worki ubrań w dobrym stanie dla dzieci</span
-                                        >
+                                            Ilość worków: 1</span>
+                                        <li class="toGiveAway"></li>
+
                                     </li>
 
                                     <li>
