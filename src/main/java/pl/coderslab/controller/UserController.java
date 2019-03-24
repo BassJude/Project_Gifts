@@ -17,6 +17,8 @@ import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,24 +54,46 @@ public class UserController {
 
     public String addGift(HttpServletRequest request) {
 
-        Gift gift=new Gift();
 
         // description
-         String[] decsriptionTable = request.getParameterValues("products[]");
+        String[] decsriptionTable = request.getParameterValues("products[]");
         StringBuilder decsriptionBuilder = new StringBuilder();
         for (String product : decsriptionTable) {
             decsriptionBuilder.append(product).append("; ");
         }
         String description = decsriptionBuilder.toString();
 
-        String bags = request.getParameter("bags");
+        int bags = Integer.parseInt(request.getParameter("bags"));
 
         Long idInstitution = Long.valueOf(request.getParameter("organization"));
-        String street=request.getParameter("street");
+        String street = request.getParameter("street");
+        String homeNumber = request.getParameter("homeNumber");
+        String city = request.getParameter("city");
+        String zipCode = request.getParameter("postcode");
+        String phone = request.getParameter("phone");
+        String courierDecsription = request.getParameter("more_info");
+
+        String date = request.getParameter("data");
+        String time = request.getParameter("time");
+
+        String pickUpTimeFulString = date + "T" + time;
+        LocalDateTime pickUpTime = LocalDateTime.parse(pickUpTimeFulString, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
 
 
-
-
+        Gift gift = new Gift();
+        gift.setDecsription(description);
+        gift.setBags(bags);
+        gift.setStreet(street);
+        gift.setHomeNumber(homeNumber);
+        gift.setCity(city);
+        gift.setZipCode(zipCode);
+        gift.setPhone(phone);
+        gift.setCourierDecsription(courierDecsription);
+        gift.setStatus("Courier");
+        gift.setPickUpTime(pickUpTime);
+        gift.setUser(userSession.getUserInSession());
+        gift.setInstitution(institutionService.findById(idInstitution));
+        giftService.save(gift);
 
 
         return "forward:/user/allMyGifts";
