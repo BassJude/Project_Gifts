@@ -3,11 +3,16 @@ package pl.coderslab.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import pl.coderslab.model.Gift;
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserSession;
+import pl.coderslab.repository.InstitutionRepository;
 import pl.coderslab.repository.UserRepository;
 import pl.coderslab.utils.BCrypt;
 
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +23,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private InstitutionRepository institutionRepository;
 
     @Autowired
     private UserSession userSession;
@@ -183,4 +191,6 @@ public class UserService {
 
 
     }
+
+
 }
