@@ -38,6 +38,7 @@
             </div>
         </header>
 
+
         <section class="form--steps">
             <div class="form--steps-instructions">
                 <div class="form--steps-container">
@@ -67,7 +68,7 @@
             <div class="form--steps-container">
                 <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-                <form>
+                <form action="/user/addGiftJs" method="post">
                     <!-- STEP 1: class .active is switching steps -->
                     <div data-step="1" class="active">
                         <h3>Zaznacz co chcesz oddać:</h3>
@@ -77,7 +78,7 @@
                                 <input
                                         type="checkbox"
                                         name="products[]"
-                                        value="clothes-to-use"
+                                        value="ubrania, które nadają się do ponownego użycia"
                                         class="firstStep"
                                 />
                                 <span class="checkbox"></span>
@@ -92,7 +93,7 @@
                                 <input
                                         type="checkbox"
                                         name="products[]"
-                                        value="clothes-useless"
+                                        value="ubrania, do wyrzucenia"
                                         class="firstStep"
                                 />
                                 <span class="checkbox"></span>
@@ -102,7 +103,7 @@
 
                         <div class="form-group form-group--checkbox">
                             <label>
-                                <input type="checkbox" name="products[]" value="toys" class="firstStep" />
+                                <input type="checkbox" name="products[]" value="zabawki" class="firstStep" />
                                 <span class="checkbox"></span>
                                 <span class="description">zabawki</span>
                             </label>
@@ -110,7 +111,7 @@
 
                         <div class="form-group form-group--checkbox">
                             <label>
-                                <input type="checkbox" name="products[]" value="books" class="firstStep" />
+                                <input type="checkbox" name="products[]" value="książki" class="firstStep" />
                                 <span class="checkbox"></span>
                                 <span class="description">książki</span>
                             </label>
@@ -118,14 +119,14 @@
 
                         <div class="form-group form-group--checkbox">
                             <label>
-                                <input type="checkbox" name="products[]" value="other" class="firstStep" />
+                                <input type="checkbox" name="products[]" value="inne" class="firstStep" />
                                 <span class="checkbox"></span>
                                 <span class="description">inne</span>
                             </label>
                         </div>
 
                         <div class="form-group form-group--buttons">
-                            <button type="button" class="btn next-step">Dalej</button>
+                            <button type="button" class="btn next-step one">Dalej</button>
                         </div>
                     </div>
 
@@ -148,10 +149,11 @@
 
                     <!-- STEP 3 -->
                     <div data-step="3">
+
                         <h3>Lokalizacja:</h3>
 
-                        <div class="form-group form-group--dropdown">
-                            <select name="localization">
+                        <div class="form-group form-group--dropdown" >
+                            <select name="localization" >
                                 <option value="0">- wybierz -</option>
                                 <option value="warsaw">Warszawa</option>
                                 <option value="wroclaw">Wrocław</option>
@@ -239,7 +241,7 @@
 
                         <div class="form-group form-group--buttons">
                             <button type="button" class="btn prev-step">Wstecz</button>
-                            <button type="button" class="btn next-step">Dalej</button>
+                            <button type="button" class="btn next-step four">Dalej</button>
                         </div>
                     </div>
 
@@ -251,26 +253,26 @@
                             <div class="form-section--column">
                                 <h4>Adres odbioru</h4>
                                 <div class="form-group form-group--inline">
-                                    <label> Ulica <input type="text" name="street" id="street" /> </label>
+                                    <label> Ulica* <input type="text" name="street" id="street" /> </label>
                                 </div>
 
                                 <div class="form-group form-group--inline">
-                                    <label> Numer domu <input type="text" name="homeNumber" id="homeNumber" /> </label>
+                                    <label> Numer domu* <input type="text" name="homeNumber" id="homeNumber" /> </label>
                                 </div>
 
                                 <div class="form-group form-group--inline">
-                                    <label> Miasto <input type="text" name="city" id="city"/> </label>
+                                    <label> Miasto* <input type="text" name="city" id="city"/> </label>
                                 </div>
 
                                 <div class="form-group form-group--inline">
                                     <label>
-                                        Kod pocztowy <input type="text" name="postcode" id="postcode" />
+                                        Kod pocztowy* <input type="text" name="postcode" id="postcode" />
                                     </label>
                                 </div>
 
                                 <div class="form-group form-group--inline">
                                     <label>
-                                        Numer telefonu <input type="phone" name="phone" id="phone" />
+                                        Numer telefonu* <input type="phone" name="phone" id="phone" />
                                     </label>
                                 </div>
                             </div>
@@ -295,7 +297,7 @@
                         </div>
                         <div class="form-group form-group--buttons">
                             <button type="button" class="btn prev-step">Wstecz</button>
-                            <button type="button" class="btn next-step">Dalej</button>
+                            <button type="button" class="btn next-step five">Dalej</button>
                         </div>
                     </div>
 
@@ -348,7 +350,9 @@
 
                         <div class="form-group form-group--buttons">
                             <button type="button" class="btn prev-step">Wstecz</button>
-                            <button type="submit" class="btn">Potwierdzam</button>
+                            <%--<button type="submit" class="btn">Potwierdzam</button>--%>
+                            <%--<input type="submit" value="Potwierdzam">--%>
+                            <input type="submit" value="Zapisz">
                         </div>
                     </div>
 

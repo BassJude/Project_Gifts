@@ -1708,9 +1708,9 @@ footer .bottom-line--icons a img {
 /* line 96, scss/style.scss */
 
 /*// TODO zmiana*/
-/*.form--steps form > div {*/
-    /*display: none;*/
-/*}*/
+.form--steps form > div {
+    display: none;
+}
 
 /* line 100, scss/style.scss */
 .form--steps form h3 {

@@ -17,6 +17,7 @@ import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -41,10 +42,37 @@ public class UserController {
         return institutionService.findAll();
     }
 
-    @RequestMapping("/addGift")
+    @GetMapping("/addGift")
     public String addGift() {
 
         return "/user/addGift";
+    }
+
+    @RequestMapping("/addGiftJs")
+
+    public String addGift(HttpServletRequest request) {
+
+        Gift gift=new Gift();
+
+        // description
+         String[] decsriptionTable = request.getParameterValues("products[]");
+        StringBuilder decsriptionBuilder = new StringBuilder();
+        for (String product : decsriptionTable) {
+            decsriptionBuilder.append(product).append("; ");
+        }
+        String description = decsriptionBuilder.toString();
+
+        String bags = request.getParameter("bags");
+
+        Long idInstitution = Long.valueOf(request.getParameter("organization"));
+        String street=request.getParameter("street");
+
+
+
+
+
+
+        return "forward:/user/allMyGifts";
     }
 
     @GetMapping("/addGiftFullForm")

@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
 // step 1
     var checkboxSlide1 = document.querySelectorAll("input.firstStep");
     var toGiveAway = document.querySelector(".toGiveAway");
-    // console.log(toGiveAway);
+    var oneButton = document.querySelector(".one");
+    oneButton.disabled=true;
+    oneButton.innerHTML="Wybierz minimum jedną rzecz";
+
 
     for (var i = 0; i < checkboxSlide1.length; i++) {
         checkboxSlide1[i].addEventListener("click", function () {
@@ -18,13 +21,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 }
             }
-         //    console.log(toGiveAway.innerHTML); // after enter into the tag
+         if (toGiveAway.innerHTML.length!==0) {
+               oneButton.disabled=false;
+             oneButton.innerHTML="Dalej";
+
+         } else {
+               oneButton.disabled=true;
+             oneButton.innerHTML="Wybierz minimum jedną rzecz";
+
+         }
         })
     }
 
 
     // step 2
     var numberBags = document.querySelector("input.secondStep");
+    numberBags.value=1;
     var numberBagsToSummary = document.querySelector(".formBags")
     numberBags.addEventListener("input", function () {
         console.log(this.value); // after enter into the tag
@@ -36,6 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
 // step 4
     var radioSlide4 = document.querySelectorAll("input.fourthStep");
     var organizationToSummary = document.querySelector(".formOrganization");
+    var fourButton = document.querySelector(".four");
+    fourButton.disabled=true;
+    fourButton.innerHTML="Wybierz organizacje";
+
     // console.log(organizationToSummary);
     for (var i = 0; i < radioSlide4.length; i++) {
         radioSlide4[i].addEventListener("click", function () {
@@ -43,42 +59,82 @@ document.addEventListener("DOMContentLoaded", function() {
             organizationToSummary.innerHTML = "Dar dla: " + this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML;
             console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
 
+            for(var i=0; i<radioSlide4.length; i++) {
+                if (radioSlide4[i].checked) {
+                    fourButton.disabled=false;
+                    fourButton.innerHTML="Dalej";
+                }
+            }
+
 
         })
     }
 
     // step 5
+    var summary1 = document.getElementById("summary1");
+    var summary2 = document.getElementById("summary2");
+
     var street = document.getElementById("street");
     var homeNumber = document.getElementById("homeNumber");
     var city = document.getElementById("city");
     var postcode = document.getElementById("postcode");
     var phone = document.getElementById("phone");
     var date = document.getElementById("data");
+
+    var dateToInput = new Date();
+    var yearToInput=dateToInput.getFullYear();
+    var monthToInput = dateToInput.getMonth()+1;
+    if (monthToInput<10) monthToInput="0"+monthToInput;
+    var dayToInput = (dateToInput.getDate()+3)%28+1; // why this way? :-)
+    if (dayToInput<10) dayToInput="0"+dayToInput;
+    date.value=yearToInput+"-"+monthToInput+"-"+dayToInput;
+    summary2.innerText= dayToInput+"-"+monthToInput+"-"+yearToInput;
+
     var time = document.getElementById("time");
+    time.value="10:00";
+    summary2.nextElementSibling.innerHTML="10:00";
     var infoForCourier = document.getElementById("infoForCourier");
 
-    var summary1 = document.getElementById("summary1");
-    var summary2 = document.getElementById("summary2");
+
+    var fiveButton = document.querySelector(".five");
+    fiveButton.disabled=true;
+    fiveButton.innerHTML="\"*\" - wypełnij pola obowiązkowe";
+
+    function checkInputs() {
+        if ((street.value.length===0||homeNumber.value.length===0||city.value.length===0||postcode.value.length===0||phone.value.length===0)) {
+            fiveButton.disabled=true;
+            fiveButton.innerHTML="\"*\" - wypełnij pola obowiązkowe";
+        } else {
+            fiveButton.disabled=false;
+            fiveButton.innerHTML="Dalej";
+        }
+    }
 
     street.addEventListener("input", function () {
         summary1.innerText=this.value;
+        checkInputs();
+
 
     })
     homeNumber.addEventListener("input",function () {
         summary1.innerText=street.value+" "+this.value;
+        checkInputs();
     })
 
     city.addEventListener("input", function () {
         summary1.nextElementSibling.innerHTML=this.value;
+        checkInputs();
 
     })
 
     postcode.addEventListener("input", function () {
         summary1.nextElementSibling.nextElementSibling.innerHTML=this.value;
+        checkInputs();
 
     })
     phone.addEventListener("input",function () {
         summary1.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML=this.value;
+        checkInputs();
 
     })
     date.addEventListener("input", function () {
@@ -91,6 +147,19 @@ document.addEventListener("DOMContentLoaded", function() {
     infoForCourier.addEventListener("input", function () {
         summary2.nextElementSibling.nextElementSibling.innerHTML=this.value;
     })
+
+    // fiveButton.addEventListener("input", function () {
+    //     if ((street.value.length===0||homeNumber.value.length===0||city.value.length===0||postcode.value.length===0||phone.value.length===0)) {
+    //         fiveButton.disabled=true;
+    //         this.innerHTML="\"*\" - wypełnij pola obowiązkowe";
+    //     } else {
+    //         fiveButton.disabled=false;
+    //         this.innerHTML="Dalej";
+    //     }
+    //     console.log(street.value.length);
+    //
+    //
+    // })
 
 
 
@@ -345,7 +414,8 @@ document.addEventListener("DOMContentLoaded", function() {
          * TODO: validation, send data to server
          */
         submit(e) {
-            e.preventDefault();
+            // TODO zmiana prevent
+            // e.preventDefault();
             this.currentStep++;
             this.updateForm();
         }
