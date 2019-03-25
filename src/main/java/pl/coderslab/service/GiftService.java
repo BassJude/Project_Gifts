@@ -77,6 +77,10 @@ public class GiftService {
         return giftRepository.findAllByStatusAndUserOrderByPickUpTimeDesc(status, user);
     }
 
+    public List<Gift> findByStatus(String status) {
+        return giftRepository.findAllByStatus(status);
+    }
+
     // JS form
     public Gift getFromForm(HttpServletRequest request) {
         // description

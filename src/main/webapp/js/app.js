@@ -83,12 +83,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var dateToInput = new Date();
     var yearToInput=dateToInput.getFullYear();
-    var monthToInput = dateToInput.getMonth()+1;
+    var monthToInput = dateToInput.getMonth()+1; // +1
+
+
+    // pick up Date = date.now + 3 days, so:
+    var dayToInput = dateToInput.getDate()+3;
+     if (dayToInput>28) { // because February has 28 day....
+        dayToInput = (dateToInput.getDate()+3)%28+1;
+
+        monthToInput++;
+
+        if(monthToInput>12) {
+            monthToInput=monthToInput%12;
+            yearToInput++;
+        }
+    }
+
+
+// ifs must be here !!! not higher, because of day setting
     if (monthToInput<10) monthToInput="0"+monthToInput;
-    var dayToInput = (dateToInput.getDate()+3)%28+1; // why this way? :-)
     if (dayToInput<10) dayToInput="0"+dayToInput;
     date.value=yearToInput+"-"+monthToInput+"-"+dayToInput;
     summary2.innerText= dayToInput+"-"+monthToInput+"-"+yearToInput;
+    console.log(dayToInput+"-"+monthToInput+"-"+yearToInput);
 
     var time = document.getElementById("time");
     time.value="10:00";
@@ -111,28 +128,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     street.addEventListener("input", function () {
+        street.maxLength=100;
         summary1.innerText=this.value;
         checkInputs();
 
 
     })
     homeNumber.addEventListener("input",function () {
+        homeNumber.maxLength=50;
         summary1.innerText=street.value+" "+this.value;
         checkInputs();
     })
 
     city.addEventListener("input", function () {
+        city.maxLength=100;
         summary1.nextElementSibling.innerHTML=this.value;
         checkInputs();
 
     })
 
     postcode.addEventListener("input", function () {
+        postcode.maxLength=10;
         summary1.nextElementSibling.nextElementSibling.innerHTML=this.value;
         checkInputs();
 
     })
     phone.addEventListener("input",function () {
+        phone.maxLength=20;
         summary1.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML=this.value;
         checkInputs();
 
@@ -145,25 +167,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     })
     infoForCourier.addEventListener("input", function () {
+        infoForCourier.maxLength=200;
         summary2.nextElementSibling.nextElementSibling.innerHTML=this.value;
     })
-
-    // fiveButton.addEventListener("input", function () {
-    //     if ((street.value.length===0||homeNumber.value.length===0||city.value.length===0||postcode.value.length===0||phone.value.length===0)) {
-    //         fiveButton.disabled=true;
-    //         this.innerHTML="\"*\" - wypełnij pola obowiązkowe";
-    //     } else {
-    //         fiveButton.disabled=false;
-    //         this.innerHTML="Dalej";
-    //     }
-    //     console.log(street.value.length);
-    //
-    //
-    // })
-
-
-
-
 
 
 

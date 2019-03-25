@@ -17,7 +17,12 @@ import pl.coderslab.validator.EditValidator;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.Path;
+import javax.validation.Validator;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping(path = "/user")
@@ -36,6 +41,10 @@ public class UserController {
     @Autowired
     private UserSession userSession;
 
+    @Autowired
+    Validator validator;
+
+
     @ModelAttribute("institutionsUser")
     public List<Institution> allInstitutions() {
         return institutionService.findAll();
@@ -49,11 +58,23 @@ public class UserController {
 
     @RequestMapping("/addGiftJs")
 
-    public String addGift(HttpServletRequest request) {
+    public String addGift(HttpServletRequest request, Model model) {
 
         Gift gift = giftService.getFromForm(request);
 
-        giftService.save(gift);
+        Set<ConstraintViolation<Gift>> violations = validator.validate(gift);
+        if (!violations.isEmpty()) {
+            List<String> errors = new ArrayList<>();
+            for (ConstraintViolation<Gift> constraintViolation : violations) {
+                errors.add(constraintViolation.getMessage());
+
+            }
+            model.addAttribute("errors", errors);
+            model.addAttribute("validator", true);
+            return "/user/addGift";
+        } else {
+            giftService.save(gift);
+        }
 
 
         return "forward:/user/allMyGifts";

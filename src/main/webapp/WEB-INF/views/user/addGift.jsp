@@ -38,7 +38,27 @@
             </div>
         </header>
 
+<div>
+    <c:choose>
+        <c:when test="${validator==true}">
 
+            <c:forEach items="${errors}" var="error">
+                <p>
+                    ${error}
+                </p>
+            </c:forEach>
+
+        </c:when>
+
+
+
+
+        <c:otherwise>
+
+        </c:otherwise>
+    </c:choose>
+
+</div>
         <section class="form--steps">
             <div class="form--steps-instructions">
                 <div class="form--steps-container">

@@ -329,5 +329,15 @@ public class AdminController {
         return "forward:/admin/userGifts/" + gift.getUser().getId();
     }
 
+    // filters
+    @RequestMapping("/filter/{status}")
+    public String courier(Model model, @PathVariable String status) {
+
+        List<Gift> giftList = giftService.findByStatus(status);
+        model.addAttribute("gifts", giftList);
+
+        return "/admin/allGifts";
+    }
+
 
 }

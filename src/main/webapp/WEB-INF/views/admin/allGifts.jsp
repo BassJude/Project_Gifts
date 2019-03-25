@@ -60,6 +60,12 @@
         <%--<input type="submit" value="szukaj" >--%>
     <%--</form>--%>
 
+    <h1>Filtry paczek</h1>
+    <span style="font-size: 25px"><a href="/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="/admin/allGifts">Wszystkie</a> </span><span>---------</span>
+
     <table border="1" >
         <thead>
         <tr>
