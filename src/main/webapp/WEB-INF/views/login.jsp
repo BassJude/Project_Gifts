@@ -11,7 +11,7 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form action="/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <div class="form-group">
             <input type="email" name="email" placeholder="Email" value="${email}"/>
             <span class="error"><c:if test="${loginInvalid==true}">${messageLogin}</c:if></span></div>
@@ -20,11 +20,11 @@
             <input type="password" name="pass" placeholder="Hasło" value="${pass}"/>
             <span class="error" ><c:if test="${passInvalid==true}">${messagePass}</c:if></span>
 
-            <a href="/recoverPassword" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+            <a href="${pageContext.request.contextPath}/recoverPassword" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="/registration" class="btn btn--without-border">Załóż konto</a>
+            <a href="${pageContext.request.contextPath}/registration" class="btn btn--without-border">Załóż konto</a>
             <button class="btn" type="submit">Zaloguj się</button>
         </div>
     </form>

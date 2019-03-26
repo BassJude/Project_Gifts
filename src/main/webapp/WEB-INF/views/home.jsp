@@ -41,7 +41,7 @@
             </h1>
 
             <ul class="slogan--buttons">
-                <li><a href="/user/addGift" class="btn btn--large">Oddaj rzeczy</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/addGift" class="btn btn--large">Oddaj rzeczy</a></li>
                 <li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>
             </ul>
         </div>

@@ -88,7 +88,7 @@
             <div class="form--steps-container">
                 <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-                <form action="/user/addGiftJs" method="post">
+                <form action="${pageContext.request.contextPath}/user/addGiftJs" method="post">
                     <!-- STEP 1: class .active is switching steps -->
                     <div data-step="1" class="active">
                         <h3>Zaznacz co chcesz oddać:</h3>

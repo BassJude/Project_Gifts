@@ -39,7 +39,7 @@
     </c:choose>
 
 
-    <form action="/admin/searchInstitution" method="get">
+    <form action="${pageContext.request.contextPath}/admin/searchInstitution" method="get">
         Wyszukaj instytucje: <input type="text" name="search" placeholder="instytucja">
 
         <input type="submit" value="szukaj" >
@@ -76,8 +76,8 @@
                 <td><a style="color: #309125" href="/admin/giftsFromUsers/${institution.id}">Lista darów</a></td>
 
 
-                <td><a style="color: #309125" href="/admin/editInstitution/${institution.id}">Edytuj instytucje</a></td>
-                <td><a style="color: #309125" href="/admin/deleteInstitution/${institution.id}" onclick="return confirm('Czy na pewno skasować instytucje?')">Usuń
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/editInstitution/${institution.id}">Edytuj instytucje</a></td>
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/deleteInstitution/${institution.id}" onclick="return confirm('Czy na pewno skasować instytucje?')">Usuń
                     instytucje</a></td>
 
 

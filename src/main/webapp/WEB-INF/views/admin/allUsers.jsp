@@ -43,7 +43,7 @@
     </c:choose>
 
 
-    <form action="/admin/searchUser" method="get">
+    <form action="${pageContext.request.contextPath}/admin/searchUser" method="get">
         Wyszukaj użytkownika: <input type="text" name="search" placeholder="wpisz szukane hasło">
 
         <input type="submit" value="szukaj">
@@ -72,7 +72,7 @@
                 <td>${user.email}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td><a style="color: #309125" href="/admin/userGifts/${user.id}">Lista darów</a></td>
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/userGifts/${user.id}">Lista darów</a></td>
                     <%--<td>${user.password}</td>--%>
                 <td>
                     <c:choose>
@@ -98,8 +98,8 @@
 
                 </td>
 
-                <td><a style="color: #309125" href="/admin/editUser/${user.id}">Edytuj użytkownika</a></td>
-                <td><a style="color: #309125" href="/admin/deleteUser/${user.id}"
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/editUser/${user.id}">Edytuj użytkownika</a></td>
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/deleteUser/${user.id}"
                        onclick="return confirm('Czy na pewno skasować użytkownika?')">Usuń
                     użytkownika</a></td>
 

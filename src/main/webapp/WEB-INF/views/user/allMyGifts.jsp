@@ -48,10 +48,10 @@
     <h2>Twoje dary</h2>
 
     <h1>Filtry paczek</h1>
-    <span style="font-size: 25px"><a href="/user/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/user/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/user/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/user/allMyGifts">Wszystkie</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/allMyGifts">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>

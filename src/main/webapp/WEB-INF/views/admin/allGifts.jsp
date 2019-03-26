@@ -61,10 +61,10 @@
     <%--</form>--%>
 
     <h1>Filtry paczek</h1>
-    <span style="font-size: 25px"><a href="/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="/admin/allGifts">Wszystkie</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/allGifts">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>
@@ -135,8 +135,8 @@
 
 
                 </td>
-                <td><a style="color: #309125" href="/admin/editGift/${gift.id}">Edytuj dar</a></td>
-                <td><a style="color: #309125" href="/admin/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/editGift/${gift.id}">Edytuj dar</a></td>
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/deleteGift/${gift.id}" onclick="return confirm('Czy na pewno skasować?')">Usuń
                     dar</a></td>
 
 

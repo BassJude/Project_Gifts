@@ -4,10 +4,10 @@
 
 
     <ul>
-        <li><a href="/admin/allAdmins" class="btn btn--without-border">Administratorzy</a></li>
-        <li><a href="/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
-        <li><a href="/admin/allInstitutions" class="btn btn--without-border">Instytucje</a></li>
-        <li><a href="/admin/addInstitutions" class="btn btn--without-border">Dodaj instytucje</a></li>
-        <li><a href="/admin/allGifts" class="btn btn--without-border">Wszystkie dary</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/allAdmins" class="btn btn--without-border">Administratorzy</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/allUsers" class="btn btn--without-border">Użytkownicy</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/allInstitutions" class="btn btn--without-border">Instytucje</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/addInstitutions" class="btn btn--without-border">Dodaj instytucje</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/allGifts" class="btn btn--without-border">Wszystkie dary</a></li>
     </ul>
 </nav>

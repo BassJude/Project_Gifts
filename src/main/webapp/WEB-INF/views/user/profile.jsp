@@ -17,7 +17,7 @@
 
     <h2>Profil użytkownika</h2>
         <h1>Twój email: ${user.email}</h1>
-        <h1>Chcesz zmienic hasło? -> <a href="/user/changePassword" >Kliknij</a> </h1>
+        <h1>Chcesz zmienic hasło? -> <a href="${pageContext.request.contextPath}/user/changePassword" >Kliknij</a> </h1>
         <c:choose>
 
 
