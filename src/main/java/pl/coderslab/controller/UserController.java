@@ -18,7 +18,6 @@ import pl.coderslab.validator.RegistrationValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
-import javax.validation.Path;
 import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,13 +129,13 @@ public class UserController {
 
         // TODO pytanie !!!! gubi ID
 
-        return "user/profile";
+        return "/user/profile";
     }
 
     @PostMapping("/profile")
     public String editProfile(@Validated(EditValidator.class) User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "user/profile";
+            return "/user/profile";
         }
 
 // to complet data
@@ -173,7 +172,7 @@ public class UserController {
         model.addAttribute("changeSucces", true);
         model.addAttribute("user", userSession.getUserInSession());
         // TODO psuje sie jesli po zmianie hasla zmieniam imie
-        return "user/profile";
+        return "/user/profile";
     }
 
 

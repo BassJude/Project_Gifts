@@ -3,10 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <span>
-<c:choose>
-    <c:when test="${loggedUser==true}">
+
 
         <nav class="container container--70">
+
+            <c:choose>
+                <c:when test="${loggedUser==true}">
             <ul class="nav--actions">
                 <li class="logged-user">
                     Witaj ${firstName}
@@ -23,37 +25,31 @@
                     </ul>
                 </li>
             </ul>
+                </c:when>
+                <c:otherwise>
 
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/" class="btn btn--without-border active">Start</a></li>
-                <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-                <li><a href="#" class="btn btn--without-border">O nas</a></li>
-                <li>
-                    <a href="#" class="btn btn--without-border"
-                    >Fundacje i organizacje</a
-                    >
-                </li>
-                <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
-            </ul>
-        </nav>
-    </c:when>
-
-    <c:otherwise>
-        <nav class="container container--70">
-            <ul class="nav--actions">
+                    <ul class="nav--actions">
                 <li><a href="${pageContext.request.contextPath}/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
                 <li><a href="${pageContext.request.contextPath}/registration" class="btn btn--small btn--highlighted">Załóż konto</a></li>
             </ul>
+                </c:otherwise>
+            </c:choose>
+
+
 
             <ul>
                 <li><a href="${pageContext.request.contextPath}/" class="btn btn--without-border active">Start</a></li>
-                <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-                <li><a href="#" class="btn btn--without-border">O nas</a></li>
-                <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
-                <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+                <li class="navLink1"><a href="#steps1" class="btn btn--without-border">O co chodzi?</a></li>
+                <li class="navLink2" ><a href="#aboutUs" class="btn btn--without-border">O nas</a></li>
+                <li class="navLink3" ><a href="#whoWeHelp" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                <li class="navLink4" ><a href="#navContact" class="btn btn--without-border">Kontakt</a></li>
             </ul>
+
+
+
+
+
         </nav>
-    </c:otherwise>
-</c:choose>
+
     </span>
 

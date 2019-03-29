@@ -6,12 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserSession;
+import pl.coderslab.service.GiftService;
+import pl.coderslab.service.InstitutionService;
 import pl.coderslab.service.UserService;
 import pl.coderslab.validator.RegistrationValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @SessionAttributes({"loggedUser", "firstName", "admin"})
@@ -23,11 +27,40 @@ public class HomeController {
     @Autowired
     private UserSession userSession;
 
-    @RequestMapping("")
-    public String home() {
+    @Autowired
+    private GiftService giftService;
 
-        return "home";
+    @Autowired
+    private InstitutionService institutionService;
+
+    @ModelAttribute("numberOfBags")
+    public int allBags() {
+        return giftService.allBags();
+
     }
+
+    @ModelAttribute("numberOfOrganisations")
+    public int allOrganisation() {
+        return institutionService.findAll().size();
+    }
+
+    @ModelAttribute("numberOfGifts")
+    public int allGifts() {
+        return giftService.sentGifts().size();
+    }
+
+    @ModelAttribute("institutionsHome")
+    public List<Institution> allInstitutions() {
+        return institutionService.findAll();
+    }
+
+
+    @RequestMapping("/")
+    public String start() {
+
+        return "/home";
+    }
+
 
     // TODO do zrobienia
     @RequestMapping("/aboutUs")

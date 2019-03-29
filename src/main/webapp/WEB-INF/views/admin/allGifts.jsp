@@ -61,10 +61,10 @@
     <%--</form>--%>
 
     <h1>Filtry paczek</h1>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/admin/allGifts">Wszystkie</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #912824;"     href="${pageContext.request.contextPath}/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #2350a5;"     href="${pageContext.request.contextPath}/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: green;"     href="${pageContext.request.contextPath}/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #571313;"     href="${pageContext.request.contextPath}/admin/allGifts">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>
@@ -152,7 +152,7 @@
 
 </div>
 
-<footer>
+<footer style="margin-top: 40px;">
     <div class="contact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
@@ -168,15 +168,15 @@
                 <textarea name="message" placeholder="Wiadomość" rows="1"></textarea>
             </div>
 
-            <button class="btn" type="submit">Wyślij</button>
+            <button class="btn" type="submit">Usługa niedostępna</button>
         </form>
     </div>
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>
-            <a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>
-        </div>
+        <%--<div class="bottom-line--icons">--%>
+            <%--<a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>--%>
+            <%--<a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>--%>
+        <%--</div>--%>
     </div>
 </footer>
 

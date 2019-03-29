@@ -17,7 +17,7 @@
 
     <h2>Profil użytkownika</h2>
         <h1>Twój email: ${user.email}</h1>
-        <h1>Chcesz zmienic hasło? -> <a href="${pageContext.request.contextPath}/user/changePassword" >Kliknij</a> </h1>
+
         <c:choose>
 
 
@@ -29,26 +29,29 @@
 
 
         <c:otherwise>
+            <h1>Chcesz zmienic hasło? -> <a href="${pageContext.request.contextPath}/user/changePassword" >Kliknij</a> </h1>
+
+            <form:form method="post" modelAttribute="user">
+
+                <div style="font-size: 20px" class="form-group">
+                    Imię: <form:input path="firstName"/>
+                    <form:errors path="firstName" cssClass="error" /></div>
+
+                <div style="font-size: 20px" class="form-group">
+                    Nazwisko: <form:input path="lastName"/>
+                    <form:errors path="lastName" cssClass="error" />
+                </div>
+
+
+                <input type="submit" value="Zapisz">
+
+
+            </form:form>
+
 
         </c:otherwise>
         </c:choose>
 
-        <form:form method="post" modelAttribute="user">
-
-        <div style="font-size: 20px" class="form-group">
-            Imię: <form:input path="firstName"/>
-            <form:errors path="firstName" cssClass="error" /></div>
-
-        <div style="font-size: 20px" class="form-group">
-            Nazwisko: <form:input path="lastName"/>
-            <form:errors path="lastName" cssClass="error" />
-        </div>
-
-
-        <input type="submit" value="Zapisz">
-
-
-    </form:form>
 
 
 

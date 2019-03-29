@@ -89,13 +89,13 @@ public class AdminController {
     @GetMapping("/editUser/{id}")
     public String editUser(Model model, @PathVariable Long id) {
         model.addAttribute("user", userService.findUserById(id));
-        return "admin/editUser";
+        return "/admin/editUser";
     }
 
     @PostMapping("/editUser/{id}")
     public String saveUser(@Validated(EditValidator.class) User user, BindingResult result, @PathVariable Long id, Model model) {
         if (result.hasErrors()) {
-            return "admin/editUser";
+            return "/admin/editUser";
         }
 
 // can not change last admin to false
@@ -120,6 +120,12 @@ public class AdminController {
             userSession.setUserInSession(user);
             model.addAttribute("firstName", user.getFirstName());
         }
+
+        // user id=1 is always Admin and active
+        User superAdmin = userService.findUserById((long)1);
+        superAdmin.setSuperUser(true);
+        superAdmin.setCanLogin(true);
+        userService.save(superAdmin);
 
         return "forward:/admin/allUsers";
     }
@@ -160,7 +166,7 @@ public class AdminController {
         List<User> users = userService.searchUser(search);
 
         model.addAttribute("users", users);
-        return "admin/allUsers";
+        return "/admin/allUsers";
 
     }
 
@@ -203,13 +209,13 @@ public class AdminController {
     @GetMapping("/addInstitutions")
     public String addInstitution(Model model) {
         model.addAttribute("institution", new Institution());
-        return "admin/addEditInstitution";
+        return "/admin/addEditInstitution";
     }
 
     @PostMapping("/addInstitutions")
     public String registrationUser(@Validated(RegistrationValidator.class) Institution institution, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "admin/addEditInstitution";
+            return "/admin/addEditInstitution";
         }
         institutionService.save(institution);
         model.addAttribute("registration", true);
@@ -220,13 +226,13 @@ public class AdminController {
     @GetMapping("/editInstitution/{id}")
     public String editInstitution(Model model, @PathVariable Long id) {
         model.addAttribute("institution", institutionService.findById(id));
-        return "admin/addEditInstitution";
+        return "/admin/addEditInstitution";
     }
 
     @PostMapping("/editInstitution/{id}")
     public String saveInstitution(@Validated(EditValidator.class) Institution institution, BindingResult result, @PathVariable Long id, Model model) {
         if (result.hasErrors()) {
-            return "admin/addEditInstitution";
+            return "/admin/addEditInstitution";
         }
 
         institutionService.save(institution);
@@ -258,7 +264,7 @@ public class AdminController {
 
 
         model.addAttribute("institutions", institutions);
-        return "admin/allInstitutions";
+        return "/admin/allInstitutions";
 
     }
 
@@ -298,13 +304,13 @@ public class AdminController {
     @GetMapping("/editGift/{id}")
     public String editGift(Model model, @PathVariable Long id) {
         model.addAttribute("gift", giftService.findById(id));
-        return "admin/editGift";
+        return "/admin/editGift";
     }
 
     @PostMapping("/editGift/{id}")
     public String saveGift(@Validated(EditValidator.class) Gift gift, BindingResult result, @PathVariable Long id, Model model) {
         if (result.hasErrors()) {
-            return "admin/editGift";
+            return "/admin/editGift";
         }
 
         // to complet data

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.coderslab</groupId>
-    <artifactId>Gifts</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>gifts</artifactId>
+    <version>1</version>
 
     <packaging>war</packaging>
 
@@ -59,7 +59,14 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>1.11.1.RELEASE</version>
         </dependency>
-<!--nizej mamy dane do maila-->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.3.6.Final</version>
+        </dependency>
+
+        <!--nizej mamy dane do maila-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -74,6 +81,21 @@
             <artifactId>javax.mail-api</artifactId>
             <version>1.6.2</version>
         </dependency>
+
+
+
+        <dependency>
+            <groupId>javax.activation</groupId><artifactId>activation</artifactId>
+            <version>1.1.1</version></dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId><artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version></dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId><artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version></dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId><artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version></dependency>
 
 
 

@@ -105,7 +105,7 @@
 
 </section>
 
-<footer>
+<footer style="margin-top: 40px;">
     <div class="contact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
@@ -121,15 +121,15 @@
                 <textarea name="message" placeholder="Wiadomość" rows="1"></textarea>
             </div>
 
-            <button class="btn" type="submit">Wyślij</button>
+            <button class="btn" type="submit">Usługa niedostępna</button>
         </form>
     </div>
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>
-            <a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>
-        </div>
+        <%--<div class="bottom-line--icons">--%>
+            <%--<a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>--%>
+            <%--<a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>--%>
+        <%--</div>--%>
     </div>
 </footer>
 

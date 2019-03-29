@@ -48,10 +48,10 @@
     <h2>Twoje dary</h2>
 
     <h1>Filtry paczek</h1>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a href="${pageContext.request.contextPath}/user/allMyGifts">Wszystkie</a> </span><span>---------</span>
+    <span style="font-size: 25px;color: #912824;"><a style="color: #912824;" href="${pageContext.request.contextPath}/user/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px;color: #2350a5;"><a style="color: #2350a5;" href="${pageContext.request.contextPath}/user/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px;color: green;"><a style="color: green;" href="${pageContext.request.contextPath}/user/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px;color: #571313;"><a style="color: #571313;" href="${pageContext.request.contextPath}/user/allMyGifts">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>
@@ -133,6 +133,11 @@
 
     </table>
 
+
+    <ul class="slogan--buttons">
+        <li><a href="${pageContext.request.contextPath}/user/addGift" class="btn btn--large">Dodaj kolejny dar</a></li>
+        <%--<li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>--%>
+    </ul>
 
 </div>
 

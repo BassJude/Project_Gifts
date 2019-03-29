@@ -2,6 +2,7 @@ package pl.coderslab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.model.Gift;
 import pl.coderslab.model.Institution;
 import pl.coderslab.model.User;
@@ -15,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
+@Transactional
 public class GiftService {
 
     @Autowired
@@ -79,6 +81,24 @@ public class GiftService {
 
     public List<Gift> findByStatus(String status) {
         return giftRepository.findAllByStatus(status);
+    }
+
+    public int allBags() {
+        List<Gift> giftList = giftRepository.findAll();
+        int bags = 0;
+        for (Gift g : giftList) {
+
+            if (g.getStatus().equals("Sent")) {
+                bags += g.getBags();
+            }
+
+
+        }
+        return bags;
+
+    }
+    public List<Gift> sentGifts() {
+        return giftRepository.findAllByStatus("Sent");
     }
 
     // JS form

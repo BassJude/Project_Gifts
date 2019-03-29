@@ -43,7 +43,7 @@
         <c:when test="${validator==true}">
 
             <c:forEach items="${errors}" var="error">
-                <p>
+                <p class="error">
                     ${error}
                 </p>
             </c:forEach>
@@ -152,18 +152,18 @@
 
                     <!-- STEP 2 -->
                     <div data-step="2">
-                        <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+                        <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy (max 100):</h3>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Liczba 60l worków:
-                                <input type="number" name="bags" step="1" min="1" class="secondStep" />
+                                <input type="number" name="bags" step="1" min="1" max="100" class="secondStep" />
                             </label>
                         </div>
 
                         <div class="form-group form-group--buttons">
                             <button type="button" class="btn prev-step">Wstecz</button>
-                            <button type="button" class="btn next-step">Dalej</button>
+                            <button type="button" class="btn next-step two">Dalej</button>
                         </div>
                     </div>
 

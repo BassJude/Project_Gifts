@@ -2,21 +2,19 @@ package pl.coderslab.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import pl.coderslab.model.Gift;
 import pl.coderslab.model.User;
 import pl.coderslab.model.UserSession;
 import pl.coderslab.repository.InstitutionRepository;
 import pl.coderslab.repository.UserRepository;
 import pl.coderslab.utils.BCrypt;
 
-import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
 @Service
+@Transactional
 public class UserService {
 
     // private final static String REGEX = "\\W+";
@@ -116,6 +114,7 @@ public class UserService {
         return "loginSucces";
     }
 
+    // TODO zrobic boolean
     // change password
     public String changePassword(String oldPass, String newPass1, String newPass2, Model model) {
         User user = userSession.getUserInSession();
@@ -152,7 +151,8 @@ public class UserService {
     // is the last admin
     public boolean isTheLastAdminToDetele(User user) {
         if (user.isSuperUser()) {
-            if (userRepository.countBySuperUser(true) < 2) {
+            // second condition never delete superAdmin
+            if (userRepository.countBySuperUser(true) < 2||user.getId()==(long)1) {
                 return true;
             }
         }

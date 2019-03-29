@@ -5,7 +5,7 @@
 <%@ include file="fragments/head.jspf" %>
 <body>
 
-<header class="header--main-page">
+<header class="header--main-page" style="background-image: url(${pageContext.request.contextPath}/images/header-bg.jpg); background-repeat: no-repeat;">
 
     <%@ include file="fragments/nav.jspf" %>
 
@@ -42,7 +42,7 @@
 
             <ul class="slogan--buttons">
                 <li><a href="${pageContext.request.contextPath}/user/addGift" class="btn btn--large">Oddaj rzeczy</a></li>
-                <li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>
+                <%--<li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>--%>
             </ul>
         </div>
     </div>
@@ -51,19 +51,19 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>10</em>
+            <em>${numberOfBags}</em>
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum tempora!</p>
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${numberOfOrganisations}</em>
             <h3>Wspartych organizacji</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas quam.</p>
         </div>
 
         <div class="stats--item">
-            <em>7</em>
+            <em>${numberOfGifts}</em>
             <h3>Zorganizowanych zbiórek</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos dolores commodi error. Natus, officiis vitae?</p>
         </div>
@@ -71,7 +71,7 @@
 </section>
 
 <section class="steps">
-    <h2>Wystarczą 4 proste kroki</h2>
+    <h2 id="steps1">Wystarczą 4 proste kroki</h2>
 
     <div class="steps--container">
         <div class="steps--item">
@@ -96,152 +96,54 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="${pageContext.request.contextPath}/registration" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">
-    <div class="about-us--text">
+    <div class="about-us--text" id="aboutUs">
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero optio esse quisquam illo omnis.</p>
-        <img src="/images/signature.svg" class="about-us--text-signature" alt="Signature" />
+        <img src="${pageContext.request.contextPath}/images/signature.svg" class="about-us--text-signature" alt="Signature" />
     </div>
-    <div class="about-us--image"><img src="/images/about-us.jpg" alt="People in circle" /></div>
+    <div class="about-us--image"><img src="${pageContext.request.contextPath}/images/about-us.jpg" alt="People in circle" /></div>
 </section>
 
 <section class="help">
-    <h2>Komu pomagamy?</h2>
+    <h2 id="whoWeHelp">Komu pomagamy?</h2>
 
-    <ul class="help--buttons">
-        <li data-id="1"><a href="#" class="btn btn--without-border active">Fundacjom</a></li>
-        <li data-id="2"><a href="#" class="btn btn--without-border">Organizacjom pozarządowym</a></li>
-        <li data-id="3"><a href="#" class="btn btn--without-border">Lokalnym zbiórkom</a></li>
-    </ul>
 
-    <!-- SLIDE 1 -->
+
     <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
         <ul class="help--slides-items">
-            <li>
+            <c:forEach items="${institutionsHome}" var="institution" begin="1" varStatus="theCount">
+            <li data-organisation="${theCount.count}">
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+                    <div class="title">${institution.name}</div>
+                    <div class="subtitle">Cel i misja: ${institution.missionTarget}</div>
                 </div>
 
-                <div class="col"><div class="text">ubrania, jedzenie, sprzęt AGD, meble, zabawki</div></div>
+                <div class="col"><div class="text">${institution.needs}</div></div>
             </li>
 
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-
-                <div class="col"><div class="text">ubrania, meble, zabawki</div></div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-                <div class="col"><div class="text">ubrania, jedzenie, ciepłe koce</div></div>
-            </li>
+            </c:forEach>
         </ul>
 
-        <ul class="help--slides-pagination">
-            <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
-        </ul>
+
     </div>
 
-    <!-- SLIDE 2 -->
-    <div class="help--slides" data-id="2">
-        <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic officiis mollitia dolor, neque aspernatur accusamus debitis. Ducimus, officia. Quia, sunt illum! Non iste placeat ab ipsum alias
-            quos suscipit corporis!
-        </p>
-        <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Organizacja 1</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
 
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
+    <%--<ul class="help--buttons">--%>
+        <%--<li id="previous"><a href="#" class="btn btn--without-border">Poprzednie</a></li>--%>
+        <%--<li id="next"><a href="#" class="btn btn--without-border">Następne</a></li>--%>
 
-            <li>
-                <div class="col">
-                    <div class="title">Organizacja 2</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
+    <%--</ul>--%>
 
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Organizacja 3</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
-
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Organizacja 4</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
-
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
-        </ul>
-
-        <ul class="help--slides-pagination">
-            <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
-        </ul>
-    </div>
-
-    <!-- SLIDE 3 -->
-    <div class="help--slides" data-id="3">
-        <p>Lorem ipsum dolor sit amet, his ocurreret persequeris ea, ad utinam laudem duo. Verterem adipisci partiendo eos ne, ea his reque quaeque recteque, ne quo lobortis intellegam.</p>
-        <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Lokalna zbiórka 1</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
-
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Lokalna zbiórka 2</div>
-                    <div class="subtitle">Lorem ipsum dolor sit amet consectetur.</div>
-                </div>
-
-                <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>
-            </li>
-        </ul>
-
-        <ul class="help--slides-pagination">
-            <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-            <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-        </ul>
-    </div>
 </section>
 
 <footer>
-    <div class="contact">
+    <div class="contact" id="navContact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
         <form class="form--contact">
@@ -255,13 +157,12 @@
     </div>
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="/images/icon-facebook.svg"/></a> <a href="#" class="btn btn--small"><img src="/images/icon-instagram.svg"/></a>
-        </div>
+        <%--<div class="bottom-line--icons">--%>
+            <%--<a href="#" class="btn btn--small"><img src="${pageContext.request.contextPath}/images/icon-facebook.svg"/></a> <a href="#" class="btn btn--small"><img src="${pageContext.request.contextPath}/images/icon-instagram.svg"/></a>--%>
+        <%--</div>--%>
     </div>
 </footer>
 
-<script src="/js/app.js"></script>
 
 
 <%--<%@ include file="fragments/footer.jspf" %>--%>

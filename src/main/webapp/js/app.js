@@ -1,13 +1,20 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
 
     ///////////////// my code
 // step 1
+
+
+
     var checkboxSlide1 = document.querySelectorAll("input.firstStep");
     var toGiveAway = document.querySelector(".toGiveAway");
     var oneButton = document.querySelector(".one");
-    oneButton.disabled=true;
-    oneButton.innerHTML="Wybierz minimum jedną rzecz";
+
+    if (oneButton!=null) {
+        oneButton.disabled=true;
+        oneButton.innerHTML="Wybierz minimum jedna rzecz";
+    }
+
 
 
     for (var i = 0; i < checkboxSlide1.length; i++) {
@@ -27,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
          } else {
                oneButton.disabled=true;
-             oneButton.innerHTML="Wybierz minimum jedną rzecz";
+             oneButton.innerHTML="Wybierz minimum jedna rzecz";
 
          }
         })
@@ -36,28 +43,49 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // step 2
     var numberBags = document.querySelector("input.secondStep");
-    numberBags.value=1;
-    var numberBagsToSummary = document.querySelector(".formBags")
-    numberBags.addEventListener("input", function () {
-        console.log(this.value); // after enter into the tag
-        numberBagsToSummary.innerHTML = "Ilość worków: "+this.value;
+    var twoButton = document.querySelector(".two");
+    var numberBagsToSummary = document.querySelector(".formBags");
 
-    })
+    if (numberBags!=null) {
+        numberBags.value = 1;
 
 
+        numberBags.addEventListener("input", function () {
+
+            numberBags.max = 100;
+            if (numberBags.value < 1 || numberBags.value > 100) {
+                twoButton.disabled = true;
+                twoButton.innerHTML = "Wprowadz poprawna liczbe.";
+
+            } else {
+                twoButton.disabled = false;
+                twoButton.innerHTML = "Dalej";
+            }
+
+            numberBagsToSummary.innerHTML = "Ilosc workow: " + this.value;
+
+        })
+
+    }
 // step 4
     var radioSlide4 = document.querySelectorAll("input.fourthStep");
     var organizationToSummary = document.querySelector(".formOrganization");
     var fourButton = document.querySelector(".four");
-    fourButton.disabled=true;
-    fourButton.innerHTML="Wybierz organizacje";
+
+    if (fourButton!=null) {
+        fourButton.disabled=true;
+        fourButton.innerHTML="Wybierz organizacje";
+    }
+
+
+
 
     // console.log(organizationToSummary);
     for (var i = 0; i < radioSlide4.length; i++) {
         radioSlide4[i].addEventListener("click", function () {
 
             organizationToSummary.innerHTML = "Dar dla: " + this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML;
-            console.log(this.nextElementSibling.nextElementSibling.firstElementChild.innerHTML);
+
 
             for(var i=0; i<radioSlide4.length; i++) {
                 if (radioSlide4[i].checked) {
@@ -103,76 +131,138 @@ document.addEventListener("DOMContentLoaded", function() {
 // ifs must be here !!! not higher, because of day setting
     if (monthToInput<10) monthToInput="0"+monthToInput;
     if (dayToInput<10) dayToInput="0"+dayToInput;
-    date.value=yearToInput+"-"+monthToInput+"-"+dayToInput;
-    summary2.innerText= dayToInput+"-"+monthToInput+"-"+yearToInput;
-    console.log(dayToInput+"-"+monthToInput+"-"+yearToInput);
+
+    if (date!=null) {
+        date.value=yearToInput+"-"+monthToInput+"-"+dayToInput;
+        summary2.innerText= dayToInput+"-"+monthToInput+"-"+yearToInput;
+    }
+
+
 
     var time = document.getElementById("time");
-    time.value="10:00";
-    summary2.nextElementSibling.innerHTML="10:00";
+    if (time!=null) {
+        time.value="10:00";
+        summary2.nextElementSibling.innerHTML="10:00";
+    }
+
     var infoForCourier = document.getElementById("infoForCourier");
 
 
     var fiveButton = document.querySelector(".five");
-    fiveButton.disabled=true;
-    fiveButton.innerHTML="\"*\" - wypełnij pola obowiązkowe";
+
+    if (fiveButton!=null) {
+        fiveButton.disabled=true;
+        fiveButton.innerHTML="\"*\" - wypelnij pola obowiazkowe";
+    }
+
 
     function checkInputs() {
         if ((street.value.length===0||homeNumber.value.length===0||city.value.length===0||postcode.value.length===0||phone.value.length===0)) {
             fiveButton.disabled=true;
-            fiveButton.innerHTML="\"*\" - wypełnij pola obowiązkowe";
+            fiveButton.innerHTML="\"*\" - wypelnij pola obowiazkowe";
         } else {
             fiveButton.disabled=false;
             fiveButton.innerHTML="Dalej";
         }
     }
 
-    street.addEventListener("input", function () {
-        street.maxLength=100;
-        summary1.innerText=this.value;
-        checkInputs();
+    if (street!=null) { ////eh    because of errors in console ......
+        street.addEventListener("input", function () {
+            street.maxLength=100;
+            summary1.innerText=this.value;
+            checkInputs();
 
+
+        })
+
+
+        homeNumber.addEventListener("input",function () {
+            homeNumber.maxLength=50;
+            summary1.innerText=street.value+" "+this.value;
+            checkInputs();
+        })
+
+        city.addEventListener("input", function () {
+            city.maxLength=100;
+            summary1.nextElementSibling.innerHTML=this.value;
+            checkInputs();
+
+        })
+
+        postcode.addEventListener("input", function () {
+            postcode.maxLength=10;
+            summary1.nextElementSibling.nextElementSibling.innerHTML=this.value;
+            checkInputs();
+
+        })
+        phone.addEventListener("input",function () {
+            phone.maxLength=20;
+            summary1.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML=this.value;
+            checkInputs();
+
+        })
+        date.addEventListener("input", function () {
+            summary2.innerText= this.value;
+        })
+
+        time.addEventListener("input",function () {
+            summary2.nextElementSibling.innerHTML=this.value;
+
+        })
+        infoForCourier.addEventListener("input", function () {
+            infoForCourier.maxLength=200;
+            summary2.nextElementSibling.nextElementSibling.innerHTML=this.value;
+        })
+
+    }
+
+
+
+
+
+
+
+    // nav
+    var link1 = document.querySelector(".navLink1");
+    var link2 = document.querySelector(".navLink2");
+    var link3 = document.querySelector(".navLink3");
+    var link4 = document.querySelector(".navLink4");
+
+
+    link1.addEventListener("click",function () {
+    console.log(this);
+
+        window.location ="http://www.ameliaweb.pl/gifts/#steps1";
+
+})
+
+    link2.addEventListener("click",function () {
+        console.log(this);
+
+        window.location ="http://www.ameliaweb.pl/gifts/#aboutUs";
 
     })
-    homeNumber.addEventListener("input",function () {
-        homeNumber.maxLength=50;
-        summary1.innerText=street.value+" "+this.value;
-        checkInputs();
-    })
 
-    city.addEventListener("input", function () {
-        city.maxLength=100;
-        summary1.nextElementSibling.innerHTML=this.value;
-        checkInputs();
+    link3.addEventListener("click",function () {
+        console.log(this);
+
+        window.location ="http://www.ameliaweb.pl/gifts/#whoWeHelp";
 
     })
 
-    postcode.addEventListener("input", function () {
-        postcode.maxLength=10;
-        summary1.nextElementSibling.nextElementSibling.innerHTML=this.value;
-        checkInputs();
+    link4.addEventListener("click",function () {
+        console.log(this);
+
+        window.location ="http://www.ameliaweb.pl/gifts/#navContact";
 
     })
-    phone.addEventListener("input",function () {
-        phone.maxLength=20;
-        summary1.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML=this.value;
-        checkInputs();
-
-    })
-    date.addEventListener("input", function () {
-        summary2.innerText= this.value;
-    })
-    time.addEventListener("input",function () {
-        summary2.nextElementSibling.innerHTML=this.value;
-
-    })
-    infoForCourier.addEventListener("input", function () {
-        infoForCourier.maxLength=200;
-        summary2.nextElementSibling.nextElementSibling.innerHTML=this.value;
-    })
 
 
-
+var contact = document.querySelector("form.form--contact button.btn");
+    if (contact!=null) {
+        contact.innerHTML="Usluga niedostepna";
+        contact.disabled=true;
+    }
 
 
 
@@ -184,13 +274,14 @@ document.addEventListener("DOMContentLoaded", function() {
             this.$el = $el;
             this.$buttonsContainer = $el.querySelector(".help--buttons");
             this.$slidesContainers = $el.querySelectorAll(".help--slides");
-            this.currentSlide = this.$buttonsContainer.querySelector(".active").parentElement.dataset.id;
+            // this.currentSlide = this.$buttonsContainer.querySelector(".active").parentElement.dataset.id;  // zmiana
             this.init();
         }
 
         init() {
             this.events();
         }
+
 
         events() {
             /**
