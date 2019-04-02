@@ -37,12 +37,12 @@
 
         <%--<c:when test="${Invalid==true}">--%>
 
-            <%--<p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>--%>
+        <%--<p class="error">Nie możesz usunąć instytucji. Instytucja jest wskazywana przez rekordy w tabeli z darami!</p>--%>
         <%--</c:when>--%>
 
         <%--<c:when test="${registration==true}">--%>
 
-            <%--<p class="error">Dodałeś nową instytucje</p>--%>
+        <%--<p class="error">Dodałeś nową instytucje</p>--%>
         <%--</c:when>--%>
 
 
@@ -54,17 +54,17 @@
     </c:choose>
 
 
-    <form action="${pageContext.request.contextPath}/admin/searchGifts" method="get">
-        Wyszukaj dary: <input type="text" name="search" placeholder="wyszukaj dary">
+    <%--<form action="/admin/searchGifts" method="get">--%>
+    <%--Wyszukaj dary: <input type="text" name="search" placeholder="wyszukaj dary">--%>
 
-        <input type="submit" value="szukaj" >
-    </form>
+    <%--<input type="submit" value="szukaj" >--%>
+    <%--</form>--%>
 
     <h1>Filtry paczek</h1>
-    <span style="font-size: 25px"><a style="color: #912824;"     href="${pageContext.request.contextPath}/admin/filter/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a style="color: #2350a5;"     href="${pageContext.request.contextPath}/admin/filter/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a style="color: green;"     href="${pageContext.request.contextPath}/admin/filter/Sent">Przekazane organizacji</a> </span><span>---------</span>
-    <span style="font-size: 25px"><a style="color: #571313;"     href="${pageContext.request.contextPath}/admin/allGifts">Wszystkie</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #912824;"     href="${pageContext.request.contextPath}/admin/filter/${user.id}/Courier">Oczekujące na kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #2350a5;"     href="${pageContext.request.contextPath}/admin/filter/${user.id}/PickUp">Odebrane przez kuriera</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: green;"     href="${pageContext.request.contextPath}/admin/filter/${user.id}/Sent">Przekazane organizacji</a> </span><span>---------</span>
+    <span style="font-size: 25px"><a style="color: #571313;"     href="${pageContext.request.contextPath}/admin/userGifts/${user.id}">Wszystkie</a> </span><span>---------</span>
 
     <table border="1" >
         <thead>
@@ -174,8 +174,8 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <%--<div class="bottom-line--icons">--%>
-            <%--<a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>--%>
-            <%--<a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>--%>
+        <%--<a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>--%>
+        <%--<a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>--%>
         <%--</div>--%>
     </div>
 </footer>

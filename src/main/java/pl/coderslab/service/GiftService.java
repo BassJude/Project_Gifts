@@ -144,4 +144,9 @@ public class GiftService {
 
         return gift;
     }
+
+    // search
+    public List<Gift> search(String search) {
+        return giftRepository.findAllByDecsriptionContainingOrCityContainingOrHomeNumberContainingOrStreetContainingOrPhoneContainingOrZipCodeContaining(  search, search, search, search, search,search);
+    }
 }

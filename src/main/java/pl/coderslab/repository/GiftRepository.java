@@ -17,7 +17,8 @@ public interface GiftRepository extends JpaRepository<Gift, Long> {
 
     List<Gift> findAllByStatus(String status);
 
-
+// to search
+    List<Gift> findAllByDecsriptionContainingOrCityContainingOrHomeNumberContainingOrStreetContainingOrPhoneContainingOrZipCodeContaining(String description, String city, String homeNumber, String street, String phone, String zipCode);
 
 
 

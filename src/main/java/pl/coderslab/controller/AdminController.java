@@ -180,7 +180,7 @@ public class AdminController {
         model.addAttribute("showUserGifts", true);
         model.addAttribute("quantity", giftList.size());
 
-        return "/admin/allGifts";
+        return "/admin/userGifts";
     }
 
     /////////////// admins //////////////
@@ -335,14 +335,41 @@ public class AdminController {
         return "forward:/admin/userGifts/" + gift.getUser().getId();
     }
 
+    //    // search gifts
+    @RequestMapping("/searchGifts")
+    public String searchGifts(@RequestParam(name = "search") String search, Model model) {
+
+        List<Gift> giftList = giftService.search(search);
+
+
+        model.addAttribute("gifts", giftList);
+        return "/admin/allGifts";
+
+    }
+
     // filters
     @RequestMapping("/filter/{status}")
-    public String courier(Model model, @PathVariable String status) {
+    public String filter(Model model, @PathVariable String status) {
 
         List<Gift> giftList = giftService.findByStatus(status);
         model.addAttribute("gifts", giftList);
 
         return "/admin/allGifts";
+    }
+
+    // filters one user
+    @RequestMapping("/filter/{id}/{status}")
+    public String userFilter(Model model, @PathVariable Long id, @PathVariable String status) {
+
+        List<Gift> giftList = giftService.findByStatusAndUser(status, userService.findUserById(id));
+        User user = userService.findUserById(id);
+
+        model.addAttribute("gifts", giftList);
+        model.addAttribute("user", user);
+        model.addAttribute("showUserGifts", true);
+        model.addAttribute("quantity", giftList.size());
+
+        return "/admin/userGifts";
     }
 
 

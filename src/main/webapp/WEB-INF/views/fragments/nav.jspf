@@ -19,6 +19,7 @@
 
                         <li><a href="${pageContext.request.contextPath}/user/profile">Profil</a></li>
                         <%--<li><a href="#">Ustawienia</a></li>--%>
+                        <li><a href="${pageContext.request.contextPath}/user/addGift">Oddaj rzeczy</a></li>
                         <li><a href="${pageContext.request.contextPath}/user/allMyGifts">Moje dary</a></li>
                         <%--<li><a href="#">Moje zbiórki</a></li>--%>
                         <li><a href="${pageContext.request.contextPath}/logout">Wyloguj</a></li>

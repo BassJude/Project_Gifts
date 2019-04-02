@@ -114,18 +114,41 @@ document.addEventListener("DOMContentLoaded", function () {
     var monthToInput = dateToInput.getMonth()+1; // +1
 
 
-    // pick up Date = date.now + 3 days, so:
+    // pick up Date = date.now + 3 days but without sunday and saturday:
+    var pickUpDayName = (dateToInput.getDay()+3)%7;
     var dayToInput = dateToInput.getDate()+3;
-     if (dayToInput>28) { // because February has 28 day....
-        dayToInput = (dateToInput.getDate()+3)%28+1;
 
-        monthToInput++;
+    while (pickUpDayName===6||pickUpDayName===0) {
+        pickUpDayName=(pickUpDayName+1)%7;
+        dayToInput=(dayToInput+1);
 
-        if(monthToInput>12) {
-            monthToInput=monthToInput%12;
-            yearToInput++;
-        }
+            if (dayToInput > 28) { // because February has 28 day, this condition for all months....
+                dayToInput = dateToInput.getDate() % 28 + 1;
+
+                monthToInput++;
+
+                if (monthToInput > 12) {
+                    monthToInput = monthToInput % 12;
+                    yearToInput++;
+                }
+            }
+
+
     }
+
+
+
+
+    //  if (dayToInput>28) { // because February has 28 day, this condition for all months....
+    //     dayToInput = (dateToInput.getDate())%28+1;
+    //
+    //     monthToInput++;
+    //
+    //     if(monthToInput>12) {
+    //         monthToInput=monthToInput%12;
+    //         yearToInput++;
+    //     }
+    // }
 
 
 // ifs must be here !!! not higher, because of day setting
@@ -230,28 +253,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     link1.addEventListener("click",function () {
-    console.log(this);
+
 
         window.location ="http://www.ameliaweb.pl/gifts/#steps1";
 
 })
 
     link2.addEventListener("click",function () {
-        console.log(this);
+
 
         window.location ="http://www.ameliaweb.pl/gifts/#aboutUs";
 
     })
 
     link3.addEventListener("click",function () {
-        console.log(this);
+
 
         window.location ="http://www.ameliaweb.pl/gifts/#whoWeHelp";
 
     })
 
     link4.addEventListener("click",function () {
-        console.log(this);
+
 
         window.location ="http://www.ameliaweb.pl/gifts/#navContact";
 

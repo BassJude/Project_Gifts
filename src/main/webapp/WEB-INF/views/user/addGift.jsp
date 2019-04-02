@@ -286,7 +286,7 @@
 
                                 <div class="form-group form-group--inline">
                                     <label>
-                                        Kod pocztowy* <input type="text" name="postcode" id="postcode" />
+                                        Kod pocztowy* <input type="text" name="postcode" id="postcode" pattern="\d{2}-\d{3}" placeholder="xx-xxx" />
                                     </label>
                                 </div>
 
@@ -414,15 +414,15 @@
                 <span class="bottom-line--copy">Copyright &copy; 2018</span>
                 <div class="bottom-line--icons">
                     <a href="#" class="btn btn--small"
-                    ><img src="images/icon-facebook.svg"
+                    ><img src="${pageContext.request.contextPath}/images/icon-facebook.svg"
                     /></a>
                     <a href="#" class="btn btn--small"
-                    ><img src="images/icon-instagram.svg"
+                    ><img src="${pageContext.request.contextPath}/images/icon-instagram.svg"
                     /></a>
                 </div>
             </div>
         </footer>
 
-        <script src="/js/app.js"></script>
+
 </body>
 </html>

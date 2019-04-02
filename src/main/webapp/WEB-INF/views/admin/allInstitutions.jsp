@@ -73,7 +73,7 @@
                 <td>${institution.email}</td>
                 <td>${institution.phone}</td>
                 <td>${institution.location}</td>
-                <td><a style="color: #309125" href="/admin/giftsFromUsers/${institution.id}">Lista darów</a></td>
+                <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/giftsFromUsers/${institution.id}">Lista darów</a></td>
 
 
                 <td><a style="color: #309125" href="${pageContext.request.contextPath}/admin/editInstitution/${institution.id}">Edytuj instytucje</a></td>

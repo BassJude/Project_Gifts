@@ -117,7 +117,7 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institutionsHome}" var="institution" begin="1" varStatus="theCount">
+            <c:forEach items="${institutionsHome}" var="institution" begin="0" varStatus="theCount">
             <li data-organisation="${theCount.count}">
                 <div class="col">
                     <div class="title">${institution.name}</div>
