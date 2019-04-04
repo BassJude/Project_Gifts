@@ -207,7 +207,8 @@ public class UserService {
         user.setToken(number);
         userRepository.save(user);
 
-        return "http://localhost:8080/token/" + number+"/"+user.getId();
+//        return "http://localhost:8080/token/" + number+"/"+user.getId();
+        return "http://www.ameliaweb.pl/gifts/token/" + number+"/"+user.getId();
 
 
     }
