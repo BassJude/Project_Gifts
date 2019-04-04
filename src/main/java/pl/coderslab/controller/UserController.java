@@ -149,7 +149,7 @@ public class UserController {
         userService.save(user);
         model.addAttribute("firstName", user.getFirstName());
         userSession.setUserInSession(user);
-        // TODO nie moze wysylac znowu na profile, ; redirect:/user/profile dodaje imie do imienia
+
         return "/home";
     }
 

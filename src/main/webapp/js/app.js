@@ -295,8 +295,8 @@ var contact = document.querySelector("form.form--contact button.btn");
     class Help {
         constructor($el) {
             this.$el = $el;
-            this.$buttonsContainer = $el.querySelector(".help--buttons");
-            this.$slidesContainers = $el.querySelectorAll(".help--slides");
+            // this.$buttonsContainer = $el.querySelector(".help--buttons");
+            // this.$slidesContainers = $el.querySelectorAll(".help--slides");
             // this.currentSlide = this.$buttonsContainer.querySelector(".active").parentElement.dataset.id;  // zmiana
             this.init();
         }

@@ -75,7 +75,7 @@
                 <textarea name="message" placeholder="Wiadomość" rows="1"></textarea>
             </div>
 
-            <button class="btn" type="submit">Usługa niedostępna</button>
+            <button style="width: 200px;height: 40px; font-size: 20px" class="btn" type="submit">Usługa niedostępna</button>
         </form>
     </div>
     <div class="bottom-line">

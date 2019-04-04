@@ -10,22 +10,23 @@
 </header>
 
 <section class="login-page">
-    <h2>Zaloguj się</h2>
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <h2>Resetowanie hasła</h2>
+    <div><span class="error"><c:if test="${emailSent==true}">${messageSent}</c:if></span></div>
+    <form action="${pageContext.request.contextPath}/recoverPassword" method="post">
         <div class="form-group">
             <input type="email" name="email" placeholder="Email" value="${email}"/>
-            <span class="error"><c:if test="${loginInvalid==true}">${messageLogin}</c:if></span></div>
+            <span class="error"><c:if test="${emailInvalid==true}">${messageEmail}</c:if></span></div>
         </div>
-        <div class="form-group">
-            <input type="password" name="pass" placeholder="Hasło" value="${pass}"/>
-            <span class="error" ><c:if test="${passInvalid==true}">${messagePass}</c:if></span>
+        <%--<div class="form-group">--%>
+            <%--<input type="password" name="pass" placeholder="Hasło" value="${pass}"/>--%>
+            <%--<span class="error" ><c:if test="${passInvalid==true}">${messagePass}</c:if></span>--%>
 
-            <a href="${pageContext.request.contextPath}/recoverPassword" class="btn btn--small btn--without-border reset-password">Odzyskiwanie hasła</a>
-        </div>
+            <%--<a href="${pageContext.request.contextPath}/recoverPassword" class="btn btn--small btn--without-border reset-password">Odzyskiwanie hasła</a>--%>
+        <%--</div>--%>
 
         <div class="form-group form-group--buttons">
-            <a href="${pageContext.request.contextPath}/registration" class="btn btn--without-border">Załóż konto</a>
-            <button class="btn" type="submit">Zaloguj się</button>
+            <%--<a href="${pageContext.request.contextPath}/registration" class="btn btn--without-border">Załóż konto</a>--%>
+            <button class="btn" type="submit">Wyślij</button>
         </div>
     </form>
 </section>

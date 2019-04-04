@@ -62,7 +62,6 @@ public class HomeController {
     }
 
 
-    // TODO do zrobienia
     @RequestMapping("/aboutUs")
     public String aboutUs() {
         return "/aboutUs";
@@ -125,6 +124,10 @@ public class HomeController {
         model.addAttribute("firstName", userSession.getUserInSession().getFirstName());
         model.addAttribute("login", true);
 
+        // reset token
+        userSession.getUserInSession().setToken(0);
+        userService.save(userSession.getUserInSession());
+
         return "/home";
 
     }
@@ -139,18 +142,70 @@ public class HomeController {
     }
 
     // recover password
-    @RequestMapping("/recoverPassword")
+    @GetMapping("/recoverPassword")
     public String recoverPass() {
 
-        // TODO jak ma wygladac link w mailu? Czy w linku oprócz tokena ma być id uzytkownika?
-
-        return "redirect:" + userService.recoverPassword();
+        return "/recoverPasswordEmail";
     }
 
-    @RequestMapping("/token/{token}")
-    @ResponseBody
-    public String token(@PathVariable String token) {
-        return "Dziala/" + token;
+    @PostMapping("/recoverPassword")
+    public String recoverPassPost(@RequestParam String email, Model model) {
+        if (!userService.isEmail(email)) {
+            model.addAttribute("emailInvalid", true);
+            model.addAttribute("messageEmail", "Podany mail nie istnieje w naszej bazie");
+            model.addAttribute("email", email);
+            return "/recoverPasswordEmail";
+        }
+
+        userService.sendEmailtoUser(email);
+
+        model.addAttribute("emailSent", true);
+        model.addAttribute("messageSent", "Na podany mail została wysłana instrukcja.");
+        model.addAttribute("email", email);
+
+
+        return "/recoverPasswordEmail";
+    }
+
+    @GetMapping("/token/{token}/{id}")
+    public String token(@PathVariable int token, @PathVariable long id, Model model) {
+        User user = userService.findUserById(id);
+        if (user.getToken() != token) {
+            model.addAttribute("errorToken", true);
+            model.addAttribute("messageToken", "Nie masz uprawnień do prawidłowego wyświetlenia strony");
+
+            return "/recoverPasswordStep1";
+        }
+        model.addAttribute("token", token);
+        model.addAttribute("id", id);
+        model.addAttribute("correctToken", true);
+
+        return "/recoverPasswordStep1";
+
+    }
+
+    @PostMapping("/token/{token}/{id}")
+    public String newPassword(@PathVariable int token, @PathVariable long id, Model model, @RequestParam String password1, @RequestParam String password2) {
+        User user = userService.findUserById(id);
+        if (user.getToken() != token) {
+            model.addAttribute("errorToken", true);
+            model.addAttribute("messageToken", "Nie masz uprawnien do prawidłowego wyświetlenia strony");
+
+            return "/recoverPasswordStep1";
+        }
+
+        if (!userService.newPassword(password1, password2, model)) {
+            model.addAttribute("correctToken", true); // to show form
+            return "/recoverPasswordStep1";
+        }
+
+        user.setPasswordHash(password1);
+        user.setToken(0);
+        userService.save(user);
+        model.addAttribute("newPass", true);
+
+
+        return "/recoverPasswordStep1";
     }
 
 

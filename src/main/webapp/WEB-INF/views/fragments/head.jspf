@@ -5,6 +5,9 @@
     <%--<meta http-equiv="X-UA-Compatible" content="ie=edge" />--%>
     <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1">
 
+    <meta http-equiv = "Content-Language" content = "en"/>
+    <meta http-equiv = "Content-Type" content="text/html; charset=utf-8">
+
     <title>Oddaj Rzeczy</title>
     <meta name="description"
           content="Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać niepotrzebne rzeczy zaufanym instytucjom.">
@@ -15,7 +18,12 @@
     <%--<script src="${pageContext.request.contextPath}/js/app.js" type="text/javaScript"></script>--%>
     <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />--%>
 
-    <style> <%@ include file="/css/style.css"%>   </style>
+    <%--<link href="<c:url value="/css/style.css" />" rel="stylesheet">--%>
+
+    <%--<script src="<c:url value="/js/app.js" />"></script>--%>
+
+
+<style> <%@ include file="/css/style.css"%>   </style>
     <script> <%@ include file="/js/app.js"%>  </script>
 
 

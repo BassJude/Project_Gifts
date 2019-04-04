@@ -9,6 +9,7 @@ import pl.coderslab.model.UserSession;
 import pl.coderslab.repository.InstitutionRepository;
 import pl.coderslab.repository.UserRepository;
 import pl.coderslab.utils.BCrypt;
+import pl.coderslab.utils.Mailer;
 
 import java.util.List;
 import java.util.Random;
@@ -27,6 +28,9 @@ public class UserService {
 
     @Autowired
     private UserSession userSession;
+
+    @Autowired
+    private Mailer mailer;  // TODO wytlumaczyc, po co tak, a nie zwyczajnie zadeklarować
 
     public void save(User user) {
         userRepository.save(user);
@@ -113,10 +117,8 @@ public class UserService {
 
         return "loginSucces";
     }
-
-    // TODO zrobic boolean
-    // change password
-    public String changePassword(String oldPass, String newPass1, String newPass2, Model model) {
+// TODO zmiana na boolean
+        public String changePassword(String oldPass, String newPass1, String newPass2, Model model) {
         User user = userSession.getUserInSession();
         if (!BCrypt.checkpw(oldPass, user.getPassword())) {
             model.addAttribute("passInvalid", true);
@@ -140,6 +142,22 @@ public class UserService {
         save(userSession.getUserInSession());
 
         return "changeSucces";
+    }
+
+    // new password
+    public boolean newPassword(String password1, String password2, Model model) {
+        if (!password1.equals(password2)) {
+            model.addAttribute("passInvalid", true);
+            model.addAttribute("messagePass", "Nowe hasła nie są identyczne");
+            return false;
+        }
+        if (password1.length()<5||password1.length()>30) {
+            model.addAttribute("passInvalid", true);
+            model.addAttribute("messagePass", "Nowe hasła musi mieć od 5 do 30 znaków");
+            return false;
+        }
+
+        return true;
     }
 
     // save user in session
@@ -178,19 +196,54 @@ public class UserService {
     }
 
     //recover password
-    public String recoverPassword() {
-// token
-        Random generator = new Random();
-        int number1 = generator.nextInt(1000000) + 1;
-        int number2 = generator.nextInt(1000000) + 1;
-        int number3 = generator.nextInt(1000000) + 1;
-        int number4 = generator.nextInt(1000000) + 1;
-        String token = number1 + "-" + number2 + "-" + number3 + "-" + number4;
+    public boolean isEmail(String email) {
+        return userRepository.countByEmail(email) == (long) 1;
+    }
+    public String createLink(String email) {
+        User user = userRepository.findUsersByEmail(email);
 
-        return "http://localhost:8080/token/" + token;
+        Random generator = new Random();
+        int number = generator.nextInt(1000000) + 1;
+        user.setToken(number);
+        userRepository.save(user);
+
+        return "http://localhost:8080/token/" + number+"/"+user.getId();
 
 
     }
+
+    public void sendEmailtoUser(String email) {
+
+        String link = createLink(email);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("<!DOCTYPE html>");
+        stringBuilder.append("<html lang=\"pl\">");
+        stringBuilder.append("<head>");
+        stringBuilder.append("<meta charset=\"UTF-8\">");
+        stringBuilder.append("<title>Odzyskiwanie hasla</title>");
+        stringBuilder.append("<meta http-equiv=\"X-Ua-Compatible\" content=\"IE=edge,chrome=1\">");
+        stringBuilder.append("</head>");
+        stringBuilder.append("<body>");
+        stringBuilder.append("<div style=\"background-color: #f9c910; text-align: center\"><h1>Oddaj rzeczy</h1></div>");
+        stringBuilder.append("<p style=\"text-align: center\">W celu odzyskania hasla do aplikacji \"Oddaj rzeczy\" kliknij w link:</p>");
+        stringBuilder.append("<p style=\"text-align: center;\"><a style=\"color: #2c7021; text-decoration: none; font-size: 30px\" href=\""+link+"\" target=\"_blank\">Odzyskaj haslo</a></p>");
+        stringBuilder.append("<p style=\"margin-top: 50px; text-align: center\">Jezeli ten mail to pomylka, skasuj wiadomosc.</p>");
+        stringBuilder.append("<p style=\"margin-top: 50px; text-align: center\">Pozdrawiamy</p>");
+        stringBuilder.append("<p style=\"text-align: center\"><a href=\"http://www.ameliaweb.pl/gifts\">Link do aplikacji.</a></p>");
+        stringBuilder.append("</body>");
+        stringBuilder.append("</html>");
+
+
+        String message= stringBuilder.toString();
+        String subject = "Aplikacja \"Oddaj rzeczy\". Resetowanie hasla";
+        String userEmail = email;
+        mailer.send("stan.zapalny.band@gmail.com","halina07033",userEmail,subject,message);
+
+
+
+    }
+
 
 
 }
