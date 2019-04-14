@@ -170,9 +170,9 @@ public class HomeController {
     @GetMapping("/token/{token}/{id}")
     public String token(@PathVariable int token, @PathVariable long id, Model model) {
         User user = userService.findUserById(id);
-        if (user.getToken() != token) {
+        if (user.getToken() != token||token==0) {
             model.addAttribute("errorToken", true);
-            model.addAttribute("messageToken", "Nie masz uprawnień do prawidłowego wyświetlenia strony");
+            model.addAttribute("messageToken", "Link resetujący hasło został już wykorzystany lub przestał być aktywny.");
 
             return "/recoverPasswordStep1";
         }
@@ -187,9 +187,9 @@ public class HomeController {
     @PostMapping("/token/{token}/{id}")
     public String newPassword(@PathVariable int token, @PathVariable long id, Model model, @RequestParam String password1, @RequestParam String password2) {
         User user = userService.findUserById(id);
-        if (user.getToken() != token) {
+        if (user.getToken() != token||token==0) {
             model.addAttribute("errorToken", true);
-            model.addAttribute("messageToken", "Nie masz uprawnien do prawidłowego wyświetlenia strony");
+            model.addAttribute("messageToken", "Link resetujący hasło został już wykorzystany lub przestał być aktywny.");
 
             return "/recoverPasswordStep1";
         }
